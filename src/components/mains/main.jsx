@@ -1,9 +1,9 @@
 import React from "react"
-import Products from "../mains/products"
-import MyProducts from "../mains/myproducts"
-import NewOrders from "../mains/neworders"
-import CompletedOrders from "../mains/completedorders"
-import BlaBla from "../mains/blabla"
+import Products from "./products"
+import MyProducts from "./myproducts"
+import NewOrders from "./neworders"
+import CompletedOrders from "./completedorders"
+import BlaBla from "./blabla"
 import {
   Switch,
   Route,

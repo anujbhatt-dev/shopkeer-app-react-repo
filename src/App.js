@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import Header from "./components/layout/header"
-import Menubar from "./components/layout/menubar"
-import Main from "./components/layout/main"
+import Header from "./components/UI/header"
+import Menubar from "./components/UI/menubar"
+import Main from "./components/mains/main"
 import { BrowserRouter } from 'react-router-dom';
 
 
