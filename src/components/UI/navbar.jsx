@@ -10,11 +10,15 @@ const Navbar = (props) =>{
   return (
     <nav className="nav">
         <ul className="nav__ul">
-          <NavLink activeStyle={activeStyle} to="/neworders" exact><li className="nav__ul-li">new orders</li></NavLink>
+          {props.options.map((option)=>
+          <NavLink activeStyle={activeStyle} to={"/"+option[0]} exact><li className="nav__ul-li">
+            {option[1]}</li></NavLink>
+)}
+          {/* <NavLink activeStyle={activeStyle} to="/neworders" exact><li className="nav__ul-li">new orders</li></NavLink>
           <NavLink activeStyle={activeStyle} to="/completedorders" exact ><li className="nav__ul-li">completed orders</li></NavLink>
           <NavLink activeStyle={activeStyle} to="/myproducts" exact><li className="nav__ul-li">my products</li></NavLink>
           <NavLink activeStyle={activeStyle} to="/products" exact><li className="nav__ul-li">products</li></NavLink>
-          <NavLink activeStyle={activeStyle} to="/blabla" exact><li className="nav__ul-li">bla bla</li></NavLink>
+          <NavLink activeStyle={activeStyle} to="/blabla" exact><li className="nav__ul-li">bla bla</li></NavLink> */}
 
         </ul>
     </nav>
