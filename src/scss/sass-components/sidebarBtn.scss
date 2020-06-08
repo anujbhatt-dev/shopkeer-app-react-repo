@@ -1,0 +1,27 @@
+.sidebar{
+   display: block;
+
+   &:hover{
+     background-color: $color-grey-dark-2;
+   }
+
+  &__btn{
+    text-align: center;
+    background: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:focus{
+      outline: none;
+    }
+
+
+
+    &-span{
+      padding: 2.5rem 2rem;
+      font-size: 3rem;
+    }
+  }
+}

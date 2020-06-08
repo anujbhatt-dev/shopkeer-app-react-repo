@@ -1,0 +1,14 @@
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: $color-grey-light-2;
+  color: $color-white;
+  padding: 0rem 0rem;
+
+  @include respond(phone){
+    display: block;
+    padding-left: 0rem;
+    // text-align: center;
+  }
+}

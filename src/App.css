@@ -1,38 +1,115 @@
-.App {
-  text-align: center;
+/*
+0 t0 600 : phone;
+600 t0 900 : tab portrait;
+900 t0 1200 : tab landscape;
+1200 to 1800 : default;
+1800 + : big desktop
+*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html {
+  font-size: 62.5%;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media only screen and (max-width: 75em) {
+  html {
+    font-size: 56.25%;
+  }
+}
+@media only screen and (max-width: 56.25em) {
+  html {
+    font-size: 50%;
+  }
+}
+@media only screen and (min-width: 112.5em) {
+  html {
+    font-size: 75%;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.nav {
+  font-size: 2.2rem;
+  text-transform: uppercase;
+}
+
+.header {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  background: #eee;
+  color: #fff;
+  padding: 0rem 0rem;
+}
+@media only screen and (max-width: 37.5em) {
+  .header {
+    display: block;
+    padding-left: 0rem;
+  }
+}
+
+.nav {
+  flex-grow: 1;
+  height: 100%;
+}
+.nav__ul {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+}
+.nav__ul a {
+  color: #000;
+}
+.nav__ul a:hover {
+  background: #999;
+}
+.nav__ul-li {
+  height: 100%;
+  transition: all 0.2s;
+  flex-grow: 1;
+  padding: 1rem 2rem;
+}
+.nav__ul-li:hover {
+  background: #999;
+}
+@media only screen and (max-width: 37.5em) {
+  .nav__ul {
+    display: block;
+  }
+  .nav__ul * {
+    margin: 1rem 0;
+  }
+}
+
+.sidebar {
+  display: block;
+}
+.sidebar:hover {
+  background-color: #999;
+}
+.sidebar__btn {
+  text-align: center;
+  background: transparent;
+  border: none;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
-
-.App-link {
-  color: #61dafb;
+.sidebar__btn:focus {
+  outline: none;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.sidebar__btn-span {
+  padding: 2.5rem 2rem;
+  font-size: 3rem;
 }

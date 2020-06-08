@@ -1,0 +1,32 @@
+.nav{
+   flex-grow: 1;
+   height: 100%;
+  &__ul{
+     display: flex;
+     justify-content: space-around;
+     list-style-type: none;
+
+     & a{
+       color: $color-link;
+       &:hover{
+         background: $color-grey-dark-2;
+       }
+     }
+    &-li{
+      height: 100%;
+      transition: all .2s;
+      flex-grow: 1;
+      padding: 1rem 2rem;
+      &:hover{
+        background: $color-grey-dark-2;
+      }
+    }
+    @include respond(phone){
+      display: block;
+
+      & *{
+        margin: 1rem 0;
+      }
+    }
+  }
+}
