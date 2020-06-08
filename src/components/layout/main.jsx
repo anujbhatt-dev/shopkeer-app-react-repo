@@ -5,24 +5,26 @@ import NewOrders from "../mains/neworders"
 import CompletedOrders from "../mains/completedorders"
 import BlaBla from "../mains/blabla"
 import {
-  BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  
 } from "react-router-dom";
+
 
 const Main = (props) =>{
   return (
-       <Router>
+       
        <main className="main">
          <Switch>
          <Route path="/" exact component={NewOrders}/>
-         <Route path="/completedorders"  component={CompletedOrders}/>
-         <Route path="/myproducts"  component={MyProducts}/>
-         <Route path="/products"  component={Products}/>
-         <Route path="/blabla" component={BlaBla}/>
+         <Route path="/neworders" exact component={NewOrders}/>
+         <Route path="/completedorders" exact  component={CompletedOrders}/>
+         <Route path="/myproducts" exact component={MyProducts}/>
+         <Route path="/products" exact  component={Products}/>
+         <Route path="/blabla" exact component={BlaBla}/>
          </Switch>
        </main>
-      </Router>
+    
   )
 }
 
