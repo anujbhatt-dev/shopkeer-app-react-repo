@@ -10,7 +10,7 @@ const NewOrderContent = (props) =>{
           <div className="newOrderContent__details-date">{props.order.date}</div>
           <div className="newOrderContent__details-mode">{props.order.mode}</div>
         </div>
-        <div className="newOrderContent__orders">
+        <div className="newOrderContent__orders" onClick={props.click}>
             <div className="newOrderContent__product">
                 <div>PRODUCTS</div><br/>
                {props.order.products.map(product=>{
@@ -32,7 +32,7 @@ const NewOrderContent = (props) =>{
            })}
             </div>
         </div>
-        <div className="newOrderContent__footer">
+        <div className="newOrderContent__footer" onClick={props.click}>
           <div className="newOrderContent__footer-total" onClick={props.click}>
             ₹ {props.order.total}
           </div>
