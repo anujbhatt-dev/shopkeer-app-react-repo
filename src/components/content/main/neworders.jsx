@@ -48,6 +48,63 @@ class NewOrders extends React.Component{
                         quantity:"4 kg"
                 },
                 {
+                         name:"lehsun",
+                         quantity:"4 kg"
+                 },
+                 {
+                          name:"lehsun",
+                          quantity:"4 kg"
+                  },
+                  {
+                           name:"lehsun",
+                           quantity:"4 kg"
+                   },
+                   {
+                            name:"lehsun",
+                            quantity:"4 kg"
+                    },
+                    {
+                             name:"lehsun",
+                             quantity:"4 kg"
+                     },
+                     {
+                              name:"lehsun",
+                              quantity:"4 kg"
+                      },
+
+                      {
+                               name:"lehsun",
+                               quantity:"4 kg"
+                       },{
+                                name:"lehsun",
+                                quantity:"4 kg"
+                        },
+                        {
+                                 name:"lehsun",
+                                 quantity:"4 kg"
+                         },{
+                                  name:"lehsun",
+                                  quantity:"4 kg"
+                          },
+                          {
+                                   name:"lehsun",
+                                   quantity:"4 kg"
+                           },
+                           {
+                                    name:"lehsun",
+                                    quantity:"4 kg"
+                            },
+                            {
+                                     name:"lehsun",
+                                     quantity:"4 kg"
+                             },
+                             {
+                                      name:"lehsun",
+                                      quantity:"4 kg"
+                              },
+                              
+
+                {
                   name:"nimmbu",
                   quantity:"400 kg"
           }

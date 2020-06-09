@@ -184,6 +184,12 @@ a {
 .newOrderContent__details {
   flex-grow: 1;
 }
+.newOrderContent__orders {
+  overflow-y: scroll;
+  max-height: 10rem;
+  display: flex;
+  flex-grow: 2;
+}
 .newOrderContent__product {
   flex-grow: 1;
 }
