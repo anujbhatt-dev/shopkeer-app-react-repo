@@ -7,15 +7,17 @@ import SellerNavigationBar from "./navigation-bar/seller-navigation-bar"
 
 class Layout extends Component{
 
-    render(props){return(
-<React.Fragment>
-<header className="header">
+  render(props){return(
+    <React.Fragment>
+    <header className="header">
         <SellerSideBar />
         <SellerNavigationBar />
-      </header>
-<Menu/>
-<Main/>
-</React.Fragment>
+    </header>
+    <div className="menuMainFlex">
+      <Menu/>
+      <Main/>
+    </div>
+    </React.Fragment>
     )}
 
 }

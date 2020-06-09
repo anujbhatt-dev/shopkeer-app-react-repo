@@ -3,7 +3,7 @@ import Menubar from "../../UI/menubar"
 
 
 const completedOrdersMenu=(props)=>(
-<enubar>My Completed Orders Menu</enubar>
+<Menubar>My Completed Orders Menu</Menubar>
 )
 
 

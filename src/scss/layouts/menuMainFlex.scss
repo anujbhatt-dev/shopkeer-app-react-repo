@@ -1,0 +1,19 @@
+.menuMainFlex{
+  display: flex;
+  .menu{
+    min-height: 93vh;
+    background: $color-grey-light-2;
+  }
+  .main{
+    // position: relative;
+    min-height: 93vh;
+    flex-grow: 1;
+
+  }
+  @include respond(tab-port){
+    flex-direction: column;
+    .menu{
+      min-height: 6rem;
+    }
+  }
+}

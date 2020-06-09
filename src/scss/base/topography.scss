@@ -3,3 +3,16 @@
   font-size: 2.2rem;
   text-transform: uppercase;
 }
+
+// menuMainFlex
+
+.menuMainFlex{
+  font-size: 2rem;
+  .menu{
+    text-align: center;
+    padding: 1rem;
+  }
+  .main{
+    padding: 1rem;
+  }
+}

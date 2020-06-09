@@ -44,6 +44,17 @@ a {
   text-transform: uppercase;
 }
 
+.menuMainFlex {
+  font-size: 2rem;
+}
+.menuMainFlex .menu {
+  text-align: center;
+  padding: 1rem;
+}
+.menuMainFlex .main {
+  padding: 1rem;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -92,6 +103,26 @@ a {
   }
 }
 
+.menuMainFlex {
+  display: flex;
+}
+.menuMainFlex .menu {
+  min-height: 93vh;
+  background: #eee;
+}
+.menuMainFlex .main {
+  min-height: 93vh;
+  flex-grow: 1;
+}
+@media only screen and (max-width: 56.25em) {
+  .menuMainFlex {
+    flex-direction: column;
+  }
+  .menuMainFlex .menu {
+    min-height: 6rem;
+  }
+}
+
 .sidebar {
   display: block;
 }
@@ -112,4 +143,30 @@ a {
 .sidebar__btn-span {
   padding: 2.5rem 2rem;
   font-size: 3rem;
+}
+
+.NewOrdersBox {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 30%;
+}
+.NewOrdersBox * {
+  margin: 1rem;
+  flex-basis: 30%;
+}
+@media only screen and (max-width: 56.25em) {
+  .NewOrdersBox * {
+    flex-basis: 45%;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .NewOrdersBox * {
+    flex-basis: 100%;
+  }
+}
+
+.box {
+  display: flex;
+  flex-wrap: wrap;
+  box-shadow: 0rem 1rem 2rem #999;
 }
