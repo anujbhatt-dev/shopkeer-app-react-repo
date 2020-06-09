@@ -2,7 +2,7 @@ import React from "react"
 
 const Box = (props) =>{
   return (
-    <div className="box">
+    <div onClick={props.click} className="box">
       box
     </div>
   )
