@@ -2,16 +2,15 @@
 .NewOrdersBox{
   display: flex;
   flex-wrap: wrap;
-  flex-basis: 30%;
+  // flex-basis: 25%;
   & *{
-    margin: 1rem;
-    flex-basis: 30%;
-    @include respond(tab-port){
-      flex-basis: 45%;
-    }
-    @include respond(phone){
-      flex-basis: 100%;
-    }
+    margin: .3rem;
+    // @include respond(tab-port){
+    //   flex-basis: 45%;
+    // }
+    // @include respond(phone){
+    //   flex-basis: 100%;
+    // }
   }
 }
 
@@ -28,7 +27,9 @@
 .box{
   display: flex;
   flex-wrap: wrap;
-  box-shadow: 0rem 1rem 2rem $color-grey-dark-2;
+  box-shadow: 1rem 1rem 2rem $color-grey-dark-2;
+  background: $color-white-2;
+
   // position: absolute;
   // width: 33.333%
 }

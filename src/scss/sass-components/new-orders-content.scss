@@ -1,0 +1,51 @@
+.newOrderContent{
+   color: $color-grey-dark-3;
+   display: flex;
+   flex-wrap: wrap;
+  &__details{
+    flex-grow: 1;
+    &-name{
+
+    }
+    &-phone{
+
+    }
+    &-time{
+
+    }
+    &-date{
+
+    }
+    &-mode{
+
+    }
+  }
+  &__product{
+    flex-grow: 1;
+    &-items{
+
+    }
+  }
+  &__quantity{
+    flex-grow: 1;
+    &-items{
+
+    }
+  }
+  &__footer{
+    flex-basis: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: $color-grey-dark-2;
+    &-total{
+
+    }
+    &-choice{
+     & *{
+       margin-left: 2px;
+       padding: .2rem .5rem;
+     }
+    }
+  }
+}

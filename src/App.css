@@ -52,9 +52,25 @@ a {
   padding: 1rem;
 }
 .menuMainFlex .main {
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
+.newOrderContent {
+  text-transform: capitalize;
+  font-size: 1.4rem;
+}
+.newOrderContent__details * {
+  padding: 0.1rem;
+}
+.newOrderContent__product * {
+  padding: 0.1rem;
+}
+.newOrderContent__quantity * {
+  padding: 0.1rem;
+}
+.newOrderContent__footer * {
+  padding: 0.1rem;
+}
 .header {
   display: flex;
   justify-content: space-between;
@@ -148,25 +164,40 @@ a {
 .NewOrdersBox {
   display: flex;
   flex-wrap: wrap;
-  flex-basis: 30%;
 }
 .NewOrdersBox * {
-  margin: 1rem;
-  flex-basis: 30%;
-}
-@media only screen and (max-width: 56.25em) {
-  .NewOrdersBox * {
-    flex-basis: 45%;
-  }
-}
-@media only screen and (max-width: 37.5em) {
-  .NewOrdersBox * {
-    flex-basis: 100%;
-  }
+  margin: 0.3rem;
 }
 
 .box {
   display: flex;
   flex-wrap: wrap;
-  box-shadow: 0rem 1rem 2rem #999;
+  box-shadow: 1rem 1rem 2rem #999;
+  background: #f4f4f4;
+}
+
+.newOrderContent {
+  color: #333;
+  display: flex;
+  flex-wrap: wrap;
+}
+.newOrderContent__details {
+  flex-grow: 1;
+}
+.newOrderContent__product {
+  flex-grow: 1;
+}
+.newOrderContent__quantity {
+  flex-grow: 1;
+}
+.newOrderContent__footer {
+  flex-basis: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #999;
+}
+.newOrderContent__footer-choice * {
+  margin-left: 2px;
+  padding: 0.2rem 0.5rem;
 }

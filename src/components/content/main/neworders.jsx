@@ -2,11 +2,14 @@ import React from "react"
 import Box from "../../UI/box"
 import Modal from "../../UI/modal/modal"
 import Backdrop from "../../UI/backdrop/backdrop"
+import NewOrderContent from "./new-orders-content/new-order-content"
 
 
 
 
-class NewOrders extends React.Component{ 
+
+
+class NewOrders extends React.Component{
 
   state={
     detailView:false,
@@ -22,14 +25,14 @@ class NewOrders extends React.Component{
             products:[
                {
                         name:"Chini",
-                        quatity:"4 kg"
+                        quantity:"4 kg"
                 },
                 {
-                  name:"NAMAK",
-                  quatity:"400 kg"
+                  name:"chai",
+                  quantity:"400 kg"
           }
             ]
-          
+
           },
           {
             name:"Morty",
@@ -41,15 +44,15 @@ class NewOrders extends React.Component{
             total:948.4,
             products:[
                {
-                        name:"Chini",
-                        quatity:"4 kg"
+                        name:"lehsun",
+                        quantity:"4 kg"
                 },
                 {
-                  name:"NAMAK",
-                  quatity:"400 kg"
+                  name:"nimmbu",
+                  quantity:"400 kg"
           }
             ]
-          
+
           }
      ]
   }
@@ -80,7 +83,7 @@ class NewOrders extends React.Component{
 
 
     const boxs=(
-      this.state.orders.map(order=><Box click={this.openDetailView} />)
+      this.state.orders.map((order,index)=><Box click={this.openDetailView}><NewOrderContent order={order}/></Box>)
     )
 
 
@@ -88,7 +91,7 @@ class NewOrders extends React.Component{
   return (
 
 
-    <React.Fragment>    
+    <React.Fragment>
 {this.state.detailView===true?detailView:null}
 <div className="NewOrdersBox">
     {boxs}

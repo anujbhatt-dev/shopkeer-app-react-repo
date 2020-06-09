@@ -13,6 +13,64 @@
     padding: 1rem;
   }
   .main{
-    padding: 1rem;
+    padding: .5rem;
+  }
+}
+
+// newOrderContent scss
+.newOrderContent{
+  text-transform: capitalize;
+  font-size: 1.4rem;
+  // padding: .5rem;
+  &__details{
+
+    & *{
+      padding: .1rem;
+    }
+    &-name{
+
+    }
+    &-phone{
+
+    }
+    &-time{
+
+    }
+    &-date{
+
+    }
+    &-mode{
+
+    }
+  }
+  &__product{
+
+    & *{
+      padding: .1rem;
+    }
+    &-items{
+
+    }
+  }
+  &__quantity{
+
+    & *{
+      padding: .1rem;
+    }
+    &-items{
+
+    }
+  }
+  &__footer{
+
+    & *{
+      padding: .1rem;
+    }
+    &-total{
+
+    }
+    &-choice{
+
+    }
   }
 }
