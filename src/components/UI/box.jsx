@@ -2,7 +2,7 @@ import React from "react"
 
 const Box = (props) =>{
   return (
-    <div onClick={props.click} className="box">
+    <div className="box">
       {props.children}
     </div>
   )

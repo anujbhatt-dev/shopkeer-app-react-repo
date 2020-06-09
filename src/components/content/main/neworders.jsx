@@ -15,6 +15,7 @@ class NewOrders extends React.Component{
     detailView:false,
      orders:[
        {
+            id:1,
             name:"Rick",
             phone:"69696900",
             time:"12:45",
@@ -35,6 +36,7 @@ class NewOrders extends React.Component{
 
           },
           {
+            id:2,
             name:"Morty",
             phone:"6969612330",
             time:"8:45",
@@ -83,7 +85,7 @@ class NewOrders extends React.Component{
 
 
     const boxs=(
-      this.state.orders.map((order,index)=><Box click={this.openDetailView}><NewOrderContent order={order}/></Box>)
+      this.state.orders.map((order)=><Box key={order.id} ><NewOrderContent click={this.openDetailView} order={order}/></Box>)
     )
 
 

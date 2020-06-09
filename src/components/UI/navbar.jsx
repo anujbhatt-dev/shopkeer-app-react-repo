@@ -11,7 +11,7 @@ const Navbar = (props) =>{
     <nav className="nav">
         <ul className="nav__ul">
           {props.options.map((option)=>
-          <NavLink activeStyle={activeStyle} to={"/"+option[0]} exact><li className="nav__ul-li">
+          <NavLink key={option[0]} activeStyle={activeStyle} to={"/"+option[0]} exact><li className="nav__ul-li">
             {option[1]}</li></NavLink>
 )}
           {/* <NavLink activeStyle={activeStyle} to="/neworders" exact><li className="nav__ul-li">new orders</li></NavLink>
