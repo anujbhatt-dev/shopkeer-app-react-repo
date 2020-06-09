@@ -89,7 +89,7 @@ class NewOrders extends React.Component{
 
 
     <React.Fragment>    
-{this.state.detailView==true?detailView:null}
+{this.state.detailView===true?detailView:null}
 <div className="NewOrdersBox">
     {boxs}
    </div>
