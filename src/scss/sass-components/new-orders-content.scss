@@ -20,6 +20,12 @@
 
     }
   }
+  &__orders{
+    overflow-y: scroll;
+    max-height: 10rem;
+    display: flex;
+    flex-grow: 2;
+  }
   &__product{
     flex-grow: 1;
     &-items{

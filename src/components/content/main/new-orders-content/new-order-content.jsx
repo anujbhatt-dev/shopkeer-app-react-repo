@@ -10,25 +10,27 @@ const NewOrderContent = (props) =>{
           <div className="newOrderContent__details-date">{props.order.date}</div>
           <div className="newOrderContent__details-mode">{props.order.mode}</div>
         </div>
-        <div className="newOrderContent__product" onClick={props.click}>
-            <div>PRODUCTS</div><br/>
-           {props.order.products.map(product=>{
-             return (
-               <div className="newOrderContent__product-items">
-                  {product.name}<br/>
-               </div>
+        <div className="newOrderContent__orders">
+            <div className="newOrderContent__product">
+                <div>PRODUCTS</div><br/>
+               {props.order.products.map(product=>{
+                 return (
+                   <div className="newOrderContent__product-items">
+                      {product.name}<br/>
+                   </div>
+                 )
+               })}
+            </div>
+            <div className="newOrderContent__quantity">
+             <div>QUANTITY</div><br/>
+             {props.order.products.map(product=>{
+               return (
+                <div className="newOrderContent__quantity-items">
+                   {product.quantity}<br/>
+                </div>
              )
            })}
-        </div>
-        <div className="newOrderContent__quantity" onClick={props.click}>
-         <div>QUANTITY</div><br/>
-         {props.order.products.map(product=>{
-           return (
-            <div key={product.name} className="newOrderContent__quantity-items">
-               {product.quantity}<br/>
             </div>
-         )
-       })}
         </div>
         <div className="newOrderContent__footer">
           <div className="newOrderContent__footer-total" onClick={props.click}>
