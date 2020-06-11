@@ -17,12 +17,12 @@ const Main = (props) =>{
        
        <main className="main">
          <Switch>
-         <Route path="/" exact component={NewOrders}/>
-         <Route path="/neworders" exact component={NewOrders}/>
-         <Route path="/completedorders" exact  component={CompletedOrders}/>
-         <Route path="/myproducts" exact component={MyProducts}/>
-         <Route path="/products" exact  component={Products}/>
-         <Route path="/blabla" exact component={BlaBla}/>
+         <Route path={"/"+props.sellerCode+"/neworders"} exact component={NewOrders}/>
+         <Route path={"/"+props.sellerCode+"/completedorders"} exact  component={CompletedOrders}/>
+         <Route path={"/"+props.sellerCode+"/myproducts"} exact component={MyProducts}/>
+         <Route path={"/"+props.sellerCode+"/products"} exact  component={Products}/>
+         <Route path={"/"+props.sellerCode+"/blabla"} exact component={BlaBla}/>
+        { <Route path="/**"  render={()=><NewOrders {...props} />}/>}
          </Switch>
        </main>
     

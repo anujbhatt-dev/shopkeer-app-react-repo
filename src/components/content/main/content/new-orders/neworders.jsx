@@ -4,6 +4,8 @@ import Modal from "../../../../UI/modal/modal"
 import Backdrop from "../../../../UI/backdrop/backdrop"
 import NewOrderContent from "./new-orders-content/new-order-content"
 import NewOrdersMenu from "./new-orders-menu/new-orders-menu"
+import Spinner from "../../../../UI/spinner/spinner"
+import axios from "axios"
 
 
 
@@ -12,6 +14,8 @@ class NewOrders extends React.Component{
 
   state={
     detailView:false,
+    loading:false,
+    loaded:false,
      orders:[
        {
             id:1,
@@ -115,6 +119,33 @@ class NewOrders extends React.Component{
      ]
   }
 
+  componentDidMount(){
+    let currentUrl = window.location.href;
+    let  index=currentUrl.lastIndexOf("/")
+    let sellerCode=currentUrl.slice(index+1);
+    if(this.props.sellerCode==="none"){
+      this.props.sellerInititalize(sellerCode);
+    }
+   
+    this.setState({loading:true})
+  }
+
+  shouldComponentUpdate(nextProps,nextState){
+
+
+    if(this.props.sellerCode==="none")
+    return true;
+    return !this.state.loaded;
+  }
+
+
+  componentDidUpdate(){
+    if(this.state.loading===true)
+    axios.get("https://jsonplaceholder.typicode.com/posts").then((data)=>{
+      this.setState({loading:false,loaded:true});
+ })
+  }
+
 
   openDetailView=()=>{
 
@@ -140,24 +171,26 @@ class NewOrders extends React.Component{
     )
 
 
-    const boxs=(
+    const boxes=(
       this.state.orders.map((order)=><Box key={order.id} ><NewOrderContent click={this.openDetailView} order={order}/></Box>)
+    )
+
+    const content=(
+      <React.Fragment>
+      
+      <NewOrdersMenu/>
+{this.state.detailView===true?detailView:null}
+<div className="NewOrdersBox">
+    {boxes}
+   </div>
+    </React.Fragment>
     )
 
 
 
   return (
-
-
-    <React.Fragment>
-      <NewOrdersMenu/>
-{this.state.detailView===true?detailView:null}
-<div className="NewOrdersBox">
-    {boxs}
-   </div>
-    </React.Fragment>
-
-  )
+  this.state.loading?<Spinner/>:content
+ )
 }
 }
 
