@@ -1,14 +1,15 @@
 import React from "react"
-import Products from "./products"
-import MyProducts from "./myproducts"
-import NewOrders from "./neworders"
-import CompletedOrders from "./completedorders"
-import BlaBla from "./blabla"
 import {
   Switch,
   Route,
   
 } from "react-router-dom";
+import Products from "./content/products/products";
+import MyProducts from "./content/my-products/myproducts";
+import NewOrders from "./content/new-orders/neworders";
+import CompletedOrders from "./content/completed-orders/completedorders";
+import BlaBla from "./content/blabla/blabla";
+
 
 
 const Main = (props) =>{

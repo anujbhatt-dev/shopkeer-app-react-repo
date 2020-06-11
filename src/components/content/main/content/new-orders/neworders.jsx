@@ -1,10 +1,9 @@
 import React from "react"
-import Box from "../../UI/box"
-import Modal from "../../UI/modal/modal"
-import Backdrop from "../../UI/backdrop/backdrop"
+import Box from "../../../../UI/box"
+import Modal from "../../../../UI/modal/modal"
+import Backdrop from "../../../../UI/backdrop/backdrop"
 import NewOrderContent from "./new-orders-content/new-order-content"
-
-
+import NewOrdersMenu from "./new-orders-menu/new-orders-menu"
 
 
 
@@ -151,6 +150,7 @@ class NewOrders extends React.Component{
 
 
     <React.Fragment>
+      <NewOrdersMenu/>
 {this.state.detailView===true?detailView:null}
 <div className="NewOrdersBox">
     {boxs}
