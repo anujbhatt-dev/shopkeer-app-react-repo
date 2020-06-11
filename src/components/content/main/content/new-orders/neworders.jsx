@@ -40,6 +40,132 @@ class NewOrders extends React.Component{
           },
           {
             id:2,
+            name:"Rick",
+            phone:"69696900",
+            time:"12:45",
+            date:"12-06-2020",
+            mode:"Pick Up",
+            address:null,
+            total:448.4,
+            products:[
+               {
+                        name:"Chini",
+                        quantity:"4 kg"
+                },
+                {
+                  name:"chai",
+                  quantity:"400 kg"
+          }
+            ]
+
+          },
+          {
+            id:3,
+            name:"Rick",
+            phone:"69696900",
+            time:"12:45",
+            date:"12-06-2020",
+            mode:"Pick Up",
+            address:null,
+            total:448.4,
+            products:[
+               {
+                        name:"Chini",
+                        quantity:"4 kg"
+                },
+                {
+                  name:"chai",
+                  quantity:"400 kg"
+          }
+            ]
+
+          },
+          {
+            id:1,
+            name:"Rick",
+            phone:"69696900",
+            time:"12:45",
+            date:"12-06-2020",
+            mode:"Pick Up",
+            address:null,
+            total:448.4,
+            products:[
+               {
+                        name:"Chini",
+                        quantity:"4 kg"
+                },
+                {
+                  name:"chai",
+                  quantity:"400 kg"
+          }
+            ]
+
+          },
+          {
+            id:1,
+            name:"Rick",
+            phone:"69696900",
+            time:"12:45",
+            date:"12-06-2020",
+            mode:"Pick Up",
+            address:null,
+            total:448.4,
+            products:[
+               {
+                        name:"Chini",
+                        quantity:"4 kg"
+                },
+                {
+                  name:"chai",
+                  quantity:"400 kg"
+          }
+            ]
+
+          },
+          {
+            id:1,
+            name:"Rick",
+            phone:"69696900",
+            time:"12:45",
+            date:"12-06-2020",
+            mode:"Pick Up",
+            address:null,
+            total:448.4,
+            products:[
+               {
+                        name:"Chini",
+                        quantity:"4 kg"
+                },
+                {
+                  name:"chai",
+                  quantity:"400 kg"
+          }
+            ]
+
+          },
+          {
+            id:1,
+            name:"Rick",
+            phone:"69696900",
+            time:"12:45",
+            date:"12-06-2020",
+            mode:"Pick Up",
+            address:null,
+            total:448.4,
+            products:[
+               {
+                        name:"Chini",
+                        quantity:"4 kg"
+                },
+                {
+                  name:"chai",
+                  quantity:"400 kg"
+          }
+            ]
+
+          },
+          {
+            id:4,
             name:"Morty",
             phone:"6969612330",
             time:"8:45",
@@ -180,7 +306,7 @@ class NewOrders extends React.Component{
       
       <NewOrdersMenu/>
 {this.state.detailView===true?detailView:null}
-<div className="NewOrdersBox">
+   <div className="main__newOrderBox">
     {boxes}
    </div>
     </React.Fragment>

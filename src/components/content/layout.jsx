@@ -28,9 +28,7 @@ class Layout extends Component{
         <SellerSideBar  sellerCode={this.state.sellerCode} />
         <SellerNavigationBar sellerCode={this.state.sellerCode}/>
     </header>
-    <div className="menuMainFlex">
-      <Main  sellerCode={this.state.sellerCode}  sellerInititalize={this.sellerInititalize}/>
-    </div>
+       <Main  sellerCode={this.state.sellerCode}  sellerInititalize={this.sellerInititalize}/>  
     </React.Fragment>
     )}
 

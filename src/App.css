@@ -44,14 +44,11 @@ a {
   text-transform: uppercase;
 }
 
-.menuMainFlex {
+.main .main__menuBar {
   font-size: 2rem;
+  padding: 0.5rem;
 }
-.menuMainFlex .menu {
-  text-align: center;
-  padding: 1rem;
-}
-.menuMainFlex .main {
+.main .main__newOrderBox {
   padding: 0.5rem;
 }
 
@@ -119,23 +116,39 @@ a {
   }
 }
 
-.menuMainFlex {
+.main {
   display: flex;
 }
-.menuMainFlex .menu {
-  min-height: 93vh;
-  background: #eee;
-}
-.menuMainFlex .main {
-  min-height: 93vh;
-  flex-grow: 1;
-}
 @media only screen and (max-width: 56.25em) {
-  .menuMainFlex {
+  .main {
     flex-direction: column;
   }
-  .menuMainFlex .menu {
-    min-height: 6rem;
+}
+.main .main__menuBar {
+  min-height: 90vh;
+  background: #eee;
+  display: flex;
+}
+@media only screen and (max-width: 56.25em) {
+  .main .main__menuBar {
+    min-height: 5vh;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.main .main__newOrderBox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-grow: 1;
+  min-height: 90vh;
+}
+@media only screen and (max-width: 56.25em) {
+  .main .main__newOrderBox {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
   }
 }
 
@@ -174,6 +187,7 @@ a {
   flex-wrap: wrap;
   box-shadow: 1rem 1rem 2rem #999;
   background: #f4f4f4;
+  margin: 1rem;
 }
 
 .newOrderContent {
