@@ -7,7 +7,7 @@ import {
 
 const Menubar = (props) =>{
   return (
-      <aside className="menubar">
+      <aside className="main__menuBar">
         {props.children}
       </aside>
   )

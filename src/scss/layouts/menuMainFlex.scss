@@ -1,19 +1,32 @@
-.menuMainFlex{
+.main{
   display: flex;
-  .menu{
-    min-height: 93vh;
-    background: $color-grey-light-2;
-  }
-  .main{
-    // position: relative;
-    min-height: 93vh;
-    flex-grow: 1;
-    // display: flex;
-  }
   @include respond(tab-port){
     flex-direction: column;
-    .menu{
-      min-height: 6rem;
+    // justify-content: flex-start;
+  }
+  .main__menuBar{
+    min-height: 90vh;
+    background: $color-grey-light-2;
+    display: flex;
+    @include respond(tab-port){
+      // flex-direction: column;
+      // justify-content: flex-start;
+      min-height: 5vh;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  .main__newOrderBox{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-grow: 1;
+    min-height: 90vh;
+    @include respond(tab-port){
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
     }
   }
 }

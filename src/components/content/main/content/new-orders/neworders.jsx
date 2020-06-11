@@ -92,7 +92,7 @@ class NewOrders extends React.Component{
       <React.Fragment>
       <NewOrdersMenu/>
 {this.state.detailView===true?detailView:null}
-<div className="NewOrdersBox">
+   <div className="main__newOrderBox">
     {boxes}
    </div>
     </React.Fragment>

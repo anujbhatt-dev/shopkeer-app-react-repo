@@ -6,15 +6,14 @@
 
 // menuMainFlex
 
-.menuMainFlex{
-  font-size: 2rem;
-  .menu{
-    text-align: center;
-    padding: 1rem;
-  }
-  .main{
+.main{
+   .main__menuBar{
+    font-size: 2rem;
     padding: .5rem;
-  }
+   }
+   .main__newOrderBox{
+     padding: .5rem;
+   }
 }
 
 // newOrderContent scss
