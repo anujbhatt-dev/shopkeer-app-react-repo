@@ -6,6 +6,7 @@ import NewOrderContent from "./new-orders-content/new-order-content"
 import NewOrdersMenu from "./new-orders-menu/new-orders-menu"
 import Spinner from "../../../../UI/spinner/spinner"
 import axios from "axios"
+import LayOutContext from "../../../layout-context"
 
 
 
@@ -16,133 +17,41 @@ class NewOrders extends React.Component{
     detailView:false,
     loading:false,
     loaded:false,
-     orders:[
-       {
-            id:1,
-            name:"Rick",
-            phone:"69696900",
-            time:"12:45",
-            date:"12-06-2020",
-            mode:"Pick Up",
-            address:null,
-            total:448.4,
-            products:[
-               {
-                        name:"Chini",
-                        quantity:"4 kg"
-                },
-                {
-                  name:"chai",
-                  quantity:"400 kg"
-          }
-            ]
-
-          },
-          {
-            id:2,
-            name:"Morty",
-            phone:"6969612330",
-            time:"8:45",
-            date:"12-06-2020",
-            mode:"Pick Up",
-            address:null,
-            total:948.4,
-            products:[
-               {
-                        name:"lehsun",
-                        quantity:"4 kg"
-                },
-                {
-                         name:"lehsun",
-                         quantity:"4 kg"
-                 },
-                 {
-                          name:"lehsun",
-                          quantity:"4 kg"
-                  },
-                  {
-                           name:"lehsun",
-                           quantity:"4 kg"
-                   },
-                   {
-                            name:"lehsun",
-                            quantity:"4 kg"
-                    },
-                    {
-                             name:"lehsun",
-                             quantity:"4 kg"
-                     },
-                     {
-                              name:"lehsun",
-                              quantity:"4 kg"
-                      },
-
-                      {
-                               name:"lehsun",
-                               quantity:"4 kg"
-                       },{
-                                name:"lehsun",
-                                quantity:"4 kg"
-                        },
-                        {
-                                 name:"lehsun",
-                                 quantity:"4 kg"
-                         },{
-                                  name:"lehsun",
-                                  quantity:"4 kg"
-                          },
-                          {
-                                   name:"lehsun",
-                                   quantity:"4 kg"
-                           },
-                           {
-                                    name:"lehsun",
-                                    quantity:"4 kg"
-                            },
-                            {
-                                     name:"lehsun",
-                                     quantity:"4 kg"
-                             },
-                             {
-                                      name:"lehsun",
-                                      quantity:"4 kg"
-                              },
-                              
-
-                {
-                  name:"nimmbu",
-                  quantity:"400 kg"
-          }
-            ]
-
-          }
-     ]
+     orders:null
   }
+
+  static contextType=LayOutContext;
 
   componentDidMount(){
     let currentUrl = window.location.href;
     let  index=currentUrl.lastIndexOf("/")
     let sellerCode=currentUrl.slice(index+1);
-    if(this.props.sellerCode==="none"){
-      this.props.sellerInititalize(sellerCode);
+    if(this.context.sellerCode==="none"){
+      this.context.sellerInititalize(sellerCode);
     }
-   
+    console.log(this.props.sellerCode)
     this.setState({loading:true})
   }
 
   shouldComponentUpdate(nextProps,nextState){
 
 
-    if(this.props.sellerCode==="none")
+    if(this.context.sellerCode==="none")
     return true;
     return !this.state.loaded;
   }
 
 
   componentDidUpdate(){
+    console.log(this.context.sellerCode)
     if(this.state.loading===true)
-    axios.get("https://jsonplaceholder.typicode.com/posts").then((data)=>{
-      this.setState({loading:false,loaded:true});
+    axios.get("http://localhost:7571/getSellerConfirmedOrdersBySellerCode?sellercode="+this.context.sellerCode,
+    {
+      headers: {
+        'Content-Type': 'application/json'
+      }}).then((data)=>{
+  console.log(data.data);
+      this.setState({orders:data.data,loading:false,loaded:true});
  })
   }
 
@@ -171,13 +80,16 @@ class NewOrders extends React.Component{
     )
 
 
-    const boxes=(
-      this.state.orders.map((order)=><Box key={order.id} ><NewOrderContent click={this.openDetailView} order={order}/></Box>)
-    )
+    let  boxes=null;
+    if(this.state.orders!==null)
+    boxes=(
+      this.state.orders.map((order)=>
+        (<Box key={order.orderid} >
+        <NewOrderContent click={this.openDetailView} order={order}/></Box>)
+    ))
 
     const content=(
       <React.Fragment>
-      
       <NewOrdersMenu/>
 {this.state.detailView===true?detailView:null}
 <div className="NewOrdersBox">

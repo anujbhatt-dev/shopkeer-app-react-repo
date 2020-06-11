@@ -2,6 +2,8 @@ import React ,{Component,useState} from "react"
 import Main from "./main/main"
 import SellerSideBar from "./side-bar/side-nav-bar-seller"
 import SellerNavigationBar from "./navigation-bar/seller-navigation-bar"
+import LayOutContext from "./layout-context"
+
 
 
 class Layout extends Component{
@@ -24,6 +26,7 @@ class Layout extends Component{
 
     return(
     <React.Fragment>
+      <LayOutContext.Provider value={{sellerCode:this.state.sellerCode,sellerInititalize:this.sellerInititalize}}>
     <header className="header">
         <SellerSideBar  sellerCode={this.state.sellerCode} />
         <SellerNavigationBar sellerCode={this.state.sellerCode}/>
@@ -31,6 +34,7 @@ class Layout extends Component{
     <div className="menuMainFlex">
       <Main  sellerCode={this.state.sellerCode}  sellerInititalize={this.sellerInititalize}/>
     </div>
+    </LayOutContext.Provider>
     </React.Fragment>
     )}
 
