@@ -7,6 +7,8 @@ import NewOrdersMenu from "./new-orders-menu/new-orders-menu"
 import Spinner from "../../../../UI/spinner/spinner"
 import axios from "axios"
 import LayOutContext from "../../../layout-context"
+import NewOrderDetailView from "./new-orders-detail-view/new-order-detail-view"
+
 
 
 
@@ -15,6 +17,7 @@ class NewOrders extends React.Component{
 
   state={
     detailView:false,
+    detailViewIndex:-1,
     loading:false,
     loaded:false,
      orders:null
@@ -33,17 +36,9 @@ class NewOrders extends React.Component{
     this.setState({loading:true})
   }
 
-  shouldComponentUpdate(nextProps,nextState){
-
-
-    if(this.context.sellerCode==="none")
-    return true;
-    return !this.state.loaded;
-  }
 
 
   componentDidUpdate(){
-    console.log(this.context.sellerCode)
     if(this.state.loading===true)
     axios.get("http://localhost:7571/getSellerConfirmedOrdersBySellerCode?sellercode="+this.context.sellerCode,
     {
@@ -56,25 +51,26 @@ class NewOrders extends React.Component{
   }
 
 
-  openDetailView=()=>{
+  openDetailView=(index)=>{
 
-    this.setState({detailView:true});
+    this.setState({detailView:true,detailViewIndex:index});
 
   }
 
   closeDetailView=()=>{
 
-    this.setState({detailView:false});
+    this.setState({detailView:false,detailViewIndex:-1});
 
   }
 
 
   render(){
 
-
-    const detailView=(
+    let detailView=null;
+    if(this.state.detailViewIndex>-1)
+      detailView=(
       <React.Fragment>
-        <Modal>New Orders Modal</Modal>
+        <Modal ><NewOrderDetailView order={this.state.orders[this.state.detailViewIndex]}/></Modal>
         <Backdrop click={this.closeDetailView}/>
       </React.Fragment>
     )
@@ -83,9 +79,9 @@ class NewOrders extends React.Component{
     let  boxes=null;
     if(this.state.orders!==null)
     boxes=(
-      this.state.orders.map((order)=>
+      this.state.orders.map((order,index)=>
         (<Box key={order.orderid} >
-        <NewOrderContent click={this.openDetailView} order={order}/></Box>)
+        <NewOrderContent click={()=>this.openDetailView(index)} order={order}/></Box>)
     ))
 
     const content=(

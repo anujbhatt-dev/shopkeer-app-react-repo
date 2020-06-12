@@ -23,7 +23,7 @@ this.setState({loading:true})
 
 componentDidUpdate(){
 
-  if(this.state.loading ==true){
+  if(this.state.loading ===true){
     axios.get("http://localhost:7571/getSellerConfirmedOrdersBySellerCode?sellercode="+this.context.sellerCode,
     {
       headers: {
