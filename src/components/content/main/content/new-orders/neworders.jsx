@@ -15,6 +15,7 @@ class NewOrders extends React.Component{
 
   state={
     detailView:false,
+
     loading:false,
     loaded:false,
      orders:null
@@ -74,7 +75,7 @@ class NewOrders extends React.Component{
 
     const detailView=(
       <React.Fragment>
-        <Modal>New Orders Modal</Modal>
+        <Modal><NewORderDetailView /></Modal>
         <Backdrop click={this.closeDetailView}/>
       </React.Fragment>
     )
