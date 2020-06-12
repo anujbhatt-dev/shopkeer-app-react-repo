@@ -60,7 +60,28 @@ class NewOrders extends React.Component{
 
           },
           {
-            id:3,
+            id:1,
+            name:"Rick",
+            phone:"69696900",
+            time:"12:45",
+            date:"12-06-2020",
+            mode:"Pick Up",
+            address:null,
+            total:448.4,
+            products:[
+               {
+                        name:"Chini",
+                        quantity:"4 kg"
+                },
+                {
+                  name:"chai",
+                  quantity:"400 kg"
+          }
+            ]
+
+          },
+          {
+            id:1,
             name:"Rick",
             phone:"69696900",
             time:"12:45",
