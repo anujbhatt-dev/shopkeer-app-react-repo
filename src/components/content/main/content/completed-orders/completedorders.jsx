@@ -4,7 +4,9 @@ import CompletedOrdersMenu from "./completed-orders-menu/completed-orders-menu";
 import Spinner from "../../../../UI/spinner/spinner"
 import axios from "axios"
 import LayOutContext from "../../../layout-context";
-
+import Modal from "../../../../UI/modal/modal"
+import  CompletedOrdersDetailView from "./completed-orders-detail-view/completed-orders-detail-view"
+import Backdrop from "../../../../UI/backdrop/backdrop";
 
 
 
@@ -12,6 +14,8 @@ class CompletedOrders extends React.Component{
 
   state= {
     loading:false,
+    detailView:false,
+    detailViewIndex:-1,
     orders:null
   }
 
@@ -23,7 +27,7 @@ this.setState({loading:true})
 
 componentDidUpdate(){
 
-  if(this.state.loading ==true){
+  if(this.state.loading ===true){
     axios.get("http://localhost:7571/getSellerConfirmedOrdersBySellerCode?sellercode="+this.context.sellerCode,
     {
       headers: {
@@ -35,15 +39,30 @@ componentDidUpdate(){
   
 }
 
+
+openDetailView=(index)=>{
+
+  this.setState({detailView:true,detailViewIndex:index});
+
+}
+
+closeDetailView=()=>{
+
+  this.setState({detailView:false,detailViewIndex:-1});
+
+}
+
   
   render(){
 
     let table=<Spinner/>
 
 if(this.state.orders)
-table=( this.state.orders.map((order)=>{
+table=( this.state.orders.map((order,index)=>{
   return (
     <Completed
+
+    click={()=>this.openDetailView(index)}
     date={order.date}
     name={order.customername}
     total={order.totalprice}
@@ -51,6 +70,12 @@ table=( this.state.orders.map((order)=>{
     orderId={order.orderid}/>
   )
 }))
+
+if(this.state.detailView===true)
+table=(  <React.Fragment>
+  <Modal ><CompletedOrdersDetailView order={this.state.orders[this.state.detailViewIndex]}/></Modal>
+  <Backdrop click={this.closeDetailView}/>
+</React.Fragment>)
     
 
 

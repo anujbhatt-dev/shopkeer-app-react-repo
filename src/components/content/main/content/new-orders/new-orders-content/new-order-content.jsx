@@ -2,8 +2,8 @@ import React from "react"
 
 const NewOrderContent = (props) =>{
   return(
-      <div className="newOrderContent" >
-        <div className="newOrderContent__details onClick={props.click}">
+      <div className="newOrderContent" onClick={props.click}>
+        <div className="newOrderContent__details ">
           <div className="newOrderContent__details-name">{props.order.customername}</div>
           <div className="newOrderContent__details-phone">{props.order.contactno}</div>
           <div className="newOrderContent__details-time">{props.order.time}</div>
