@@ -1,32 +1,59 @@
 import React, {useState} from "react"
 import Completed from "./complete-orders-table-section/complete-orders-table-section"
 import CompletedOrdersMenu from "./completed-orders-menu/completed-orders-menu";
+import Spinner from "../../../../UI/spinner/spinner"
+import axios from "axios"
+import LayOutContext from "../../../layout-context";
 
-const CompletedOrders = ()=>{
-  const [state,setState]=useState({
-    completed:[{
-      date:"20-12-20",
-      name:"anuj",
-      total:"₹4561",
-      mode:"pick up",
-      orderId:"2056"
-    },
+
+
+
+class CompletedOrders extends React.Component{
+
+  state= {
+    loading:false,
+    orders:null
+  }
+
+  static contextType=LayOutContext;
+
+  componentDidMount(){
+this.setState({loading:true})
+}
+
+componentDidUpdate(){
+
+  if(this.state.loading ==true){
+    axios.get("http://localhost:7571/getSellerConfirmedOrdersBySellerCode?sellercode="+this.context.sellerCode,
     {
-      date:"20-12-19",
-      name:"sagar",
-      total:"₹45610",
-      mode:"home delivery",
-      orderId:"1045"
-    },
-    {
-      date:"20-12-19",
-      name:"sagar",
-      total:"₹45610",
-      mode:"home delivery",
-      orderId:"1045"
-    }
-  ]
-  })
+      headers: {
+        'Content-Type': 'application/json'
+      }}).then(data=>{
+        console.log(data.data);
+      this.setState({loading:false,orders:data.data})})
+  }
+  
+}
+
+  
+  render(){
+
+    let table=<Spinner/>
+
+if(this.state.orders)
+table=( this.state.orders.map((order)=>{
+  return (
+    <Completed
+    date={order.date}
+    name={order.customername}
+    total={order.totalprice}
+    mode={order.mode}
+    orderId={order.orderid}/>
+  )
+}))
+    
+
+
 
   return (
     <React.Fragment>
@@ -40,21 +67,13 @@ const CompletedOrders = ()=>{
           <div className="completedOrders__table-header--item">mode</div>
           <div className="completedOrders__table-header--item">order_Id</div>
         </div>
-        {state.completed.map((record)=>{
-          return (
-            <Completed
-            date={record.date}
-            name={record.name}
-            total={record.total}
-            mode={record.mode}
-            orderId={record.orderId}/>
-          )
-        })}
+       {table}
       </div>
     </div>
 
     </React.Fragment>
   )
+}
 }
 
 
