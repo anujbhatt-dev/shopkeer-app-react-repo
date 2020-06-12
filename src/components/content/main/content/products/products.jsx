@@ -51,17 +51,15 @@ class Products extends React.Component {
  }
 
  if(this.state.loadingProducts===false){
-    content=( 
+    content=(
     <div className="products">
-       <div className="products__table-header">
          <ProductsTableSection products={this.state.products}/>
-       </div>
     </div>
     )}
 
   return (
     <React.Fragment>
-    {menu}  
+    {menu}
    {content}
    </React.Fragment>
   )

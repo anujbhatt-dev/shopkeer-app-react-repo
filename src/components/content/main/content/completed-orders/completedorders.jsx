@@ -36,7 +36,7 @@ componentDidUpdate(){
         console.log(data.data);
       this.setState({loading:false,orders:data.data})})
   }
-  
+
 }
 
 
@@ -52,11 +52,11 @@ closeDetailView=()=>{
 
 }
 
-  
+
   render(){
 
     let table=<Spinner/>
-
+    let modal= null
 if(this.state.orders)
 table=( this.state.orders.map((order,index)=>{
   return (
@@ -72,11 +72,11 @@ table=( this.state.orders.map((order,index)=>{
 }))
 
 if(this.state.detailView===true)
-table=(  <React.Fragment>
+modal=(  <React.Fragment>
   <Modal ><CompletedOrdersDetailView order={this.state.orders[this.state.detailViewIndex]}/></Modal>
   <Backdrop click={this.closeDetailView}/>
 </React.Fragment>)
-    
+
 
 
 
@@ -92,6 +92,7 @@ table=(  <React.Fragment>
           <div className="completedOrders__table-header--item">mode</div>
           <div className="completedOrders__table-header--item">order_Id</div>
         </div>
+        {modal}
        {table}
       </div>
     </div>

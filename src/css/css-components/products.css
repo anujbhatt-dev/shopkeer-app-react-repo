@@ -1,0 +1,10 @@
+.products {
+  flex-grow: 1;
+  background: pink;
+}
+.products__table {
+  width: 100%;
+}
+.products__table-header {
+  font-size: 2rem;
+}

@@ -288,3 +288,31 @@ a {
   flex-grow: 1;
   text-transform: capitalize;
 }
+
+.products {
+  flex-grow: 1;
+}
+.products__table {
+  padding: 1rem;
+  transform: scale(0.89);
+  background: cyan;
+  width: 100%;
+  border: 1px solid orangered;
+  box-shadow: 0rem 2rem 5rem cyan;
+}
+.products__table-header {
+  text-transform: uppercase;
+  font-size: 2.5rem;
+}
+.products__table-header--item {
+  border: 1px solid orangered;
+  padding: 1rem 2rem;
+}
+.products__table-body--row {
+  padding: 1rem 2rem;
+  font-size: 2rem;
+}
+.products__table-body--item {
+  border: 1px solid orangered;
+  padding: 1rem 2rem;
+}

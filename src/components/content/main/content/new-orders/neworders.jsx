@@ -17,11 +17,6 @@ class NewOrders extends React.Component{
 
   state={
     detailView:false,
-<<<<<<< HEAD
-
-=======
-    detailViewIndex:-1,
->>>>>>> 1d9959831baf8e5cdd8a7040389a7720964c1204
     loading:false,
     loaded:false,
      orders:null
@@ -74,11 +69,7 @@ class NewOrders extends React.Component{
     if(this.state.detailViewIndex>-1)
       detailView=(
       <React.Fragment>
-<<<<<<< HEAD
-        <Modal><NewORderDetailView /></Modal>
-=======
         <Modal ><NewOrderDetailView order={this.state.orders[this.state.detailViewIndex]}/></Modal>
->>>>>>> 1d9959831baf8e5cdd8a7040389a7720964c1204
         <Backdrop click={this.closeDetailView}/>
       </React.Fragment>
     )
