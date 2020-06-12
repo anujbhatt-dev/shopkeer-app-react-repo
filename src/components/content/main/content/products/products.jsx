@@ -19,6 +19,8 @@ class Products extends React.Component {
     products:null,
     categories:null,
     categorySelected:-1,
+    addProducts:[]
+
   }
 
   static contextType=LayOutContext;
@@ -39,6 +41,62 @@ class Products extends React.Component {
       )
   }
 
+
+  inputChangeHandler=(event,productId)=>{
+
+    if(document.getElementById("c"+productId).checked){
+
+      let index= this.state.addProducts.findIndex(product=>product.productId===productId);
+      let newAddProducts=[...this.state.addProducts]
+      newAddProducts[index].myprice=event.target.value;
+      this.setState({
+        addProducts:newAddProducts
+      })
+    }
+
+
+  }
+
+
+  checkBoxHandler=(event,productId)=>{
+
+   
+    if(event.target.checked){
+       let s=[];
+    let price = document.getElementById("p"+productId).value;
+     if(price){}
+     else{
+      let index= this.state.products.findIndex(product=>product.productid===productId);
+       price=this.state.products[index].price;
+     }
+     let newProduct={
+       myprice:price,
+       productId:productId
+     }
+     let newAddProducts=[...this.state.addProducts, newProduct]
+     this.setState({
+       addProducts:newAddProducts
+     })
+
+    }
+    else {
+      let index= this.state.addProducts.findIndex(product=>product.productid===productId);
+      let newAddProducts=[...this.state.addProducts]
+      newAddProducts.splice(index,1);
+      this.setState({
+        addProducts:newAddProducts
+      })
+
+    }
+
+  }
+
+  getAddProducts=()=>{
+
+    this.state.addProducts.forEach(product=>{console.log(product.productId+":"+product.myprice)});
+
+  }
+
   render(){
 
 
@@ -53,7 +111,11 @@ class Products extends React.Component {
  if(this.state.loadingProducts===false){
     content=(
     <div className="products">
-         <ProductsTableSection products={this.state.products}/>
+         <ProductsTableSection
+          checkBoxClick={this.checkBoxHandler} 
+         inputChange={this.inputChangeHandler} 
+         getAddProducts={this.getAddProducts}
+          products={this.state.products}/>
     </div>
     )}
 

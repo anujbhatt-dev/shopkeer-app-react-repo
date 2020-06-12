@@ -10,60 +10,6 @@ export default class ProductsTableSection extends Component {
   }
 
 
-  inputChangeHandler=(event,productId)=>{
-
-    if(document.getElementById("c"+productId).checked){
-
-      let index= this.state.addProducts.findIndex(product=>product.productId===productId);
-      let newAddProducts=[...this.state.addProducts]
-      newAddProducts[index].myprice=event.target.value;
-      this.setState({
-        addProducts:newAddProducts
-      })
-    }
-
-
-  }
-
-
-  checkBoxHandler=(event,productId)=>{
-
-   
-    if(event.target.checked){
-       let s=[];
-    let price = document.getElementById("p"+productId).value;
-     if(price){}
-     else{
-      let index= this.props.products.findIndex(product=>product.productid===productId);
-       price=this.props.products[index].price;
-     }
-     let newProduct={
-       myprice:price,
-       productId:productId
-     }
-     let newAddProducts=[...this.state.addProducts, newProduct]
-     this.setState({
-       addProducts:newAddProducts
-     })
-
-    }
-    else {
-      let index= this.state.addProducts.findIndex(product=>product.productid===productId);
-      let newAddProducts=[...this.state.addProducts]
-      newAddProducts.splice(index,1);
-      this.setState({
-        addProducts:newAddProducts
-      })
-
-    }
-
-  }
-
-  getAddProducts=()=>{
-
-    this.state.addProducts.forEach(product=>{console.log(product.productId+":"+product.myprice)});
-
-  }
 
 
     render() {
@@ -80,11 +26,11 @@ export default class ProductsTableSection extends Component {
                   </tr>
                 </thead>
                 <tbody className="products__table-body">
-                {this.props.products.map(product=><ProductsTableRow product={product} checkBoxClick={this.checkBoxHandler} inputChange={this.inputChangeHandler}/>)}
+                {this.props.products.map(product=><ProductsTableRow product={product} checkBoxClick={this.props.checkBoxClick} inputChange={this.props.inputChange}/>)}
                 </tbody>
 
             </table>
-            <button onClick={this.getAddProducts}>TEST</button>
+            <button onClick={this.props.getAddProducts}>TEST</button>
             </React.Fragment>
         )
     }
