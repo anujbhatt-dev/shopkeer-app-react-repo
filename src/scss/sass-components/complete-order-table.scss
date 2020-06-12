@@ -1,0 +1,32 @@
+.completedOrders {
+  padding: 2rem;
+  &__table {
+    background: $color-grey-light-2;
+    box-shadow: 0rem 1rem 5rem $color-grey-dark-3;
+    padding: 1rem;
+    &-header {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+
+      &--item {
+       border: 1px solid $color-grey;
+       padding:1rem 2rem;
+       flex-grow: 1;
+      }
+    }
+    &-section {
+      display: flex;
+      justify-content: center;
+      &--item {
+      border: 1px solid $color-grey-dark-2;
+      padding: 1rem 2rem;
+      flex-grow: 1;
+      text-transform: capitalize;
+      // font-size: 2rem;
+
+      }
+    }
+  }
+}

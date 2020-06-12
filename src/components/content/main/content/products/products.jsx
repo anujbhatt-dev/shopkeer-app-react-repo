@@ -7,10 +7,12 @@ const Products = ()=>{
     <React.Fragment>
       <ProductsMenu/>
     <div className="products">
-      Products
+       <div className="products__table-header">
+        products__table
+       </div>
     </div>
     </React.Fragment>
   )
 }
 
-export default Products;
+export default Products
