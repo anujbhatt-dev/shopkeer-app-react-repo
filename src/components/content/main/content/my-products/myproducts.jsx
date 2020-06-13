@@ -31,9 +31,15 @@ class MyProducts extends React.Component{
       )
 
       if(this.state.loadingProducts===true)
+      if(this.state.categorySelected===-1)
       axios.get("http://localhost:7571/getProductsBySellerCode?sellercode="+this.context.sellerCode)
-    .then(data=> {this.setState({products:data.data,loadingProducts:false});}
-      )
+       .then(data=> {this.setState({products:data.data,loadingProducts:false});}
+         )
+       
+         else{
+         axios.get("http://localhost:7571/getProductsByCategoryIdAndSellerCode?sellercode="+this.context.sellerCode+"&id="+this.state.categorySelected)
+         .then(data=> {this.setState({products:data.data,loadingProducts:false});}
+           )}
   }
 
 
@@ -51,6 +57,15 @@ class MyProducts extends React.Component{
 
   }
 
+  
+  changeCategorySelected=(categoryId)=>{
+    this.setState({
+     categorySelected:categoryId,
+      loadingProducts:true,
+    } )
+ 
+   }
+
 
   render(){
 
@@ -60,7 +75,7 @@ class MyProducts extends React.Component{
     let menu=null;
 
     if(this.state.loadingCategories===false){
-    menu=  <MyProductsMenu categories={this.state.categories}/>
+    menu=  <MyProductsMenu  changeCategorySelected={this.changeCategorySelected} categories={this.state.categories} categories={this.state.categories}/>
  }
 
  if(this.state.loadingProducts===false){

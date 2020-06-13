@@ -9,7 +9,7 @@ const productsMenu=(props)=>(
 <Menubar>
 <div className="products__menu">
 <MyProductMenuSearch />
-<MyProductMenuList p={props}/>
+<MyProductMenuList {... props}/>
 <MyProductMenuImage />
 <MyProductMenuUpdate />
 </div>

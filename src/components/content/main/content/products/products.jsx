@@ -19,7 +19,9 @@ class Products extends React.Component {
     products:null,
     categories:null,
     categorySelected:-1,
-    addProducts:[]
+    addProducts:[],
+    updateDisable:true,
+    addingProducts:false,
 
   }
 
@@ -27,6 +29,7 @@ class Products extends React.Component {
 
   componentDidMount(){
     this.setState({loading:true})
+    
   }
 
   componentDidUpdate(){
@@ -35,11 +38,47 @@ class Products extends React.Component {
     .then(data=> {this.setState({categories:data.data,loadingCategories:false});}
       )
 
-      if(this.state.loadingProducts===true)
-      axios.get("http://localhost:7571/getProductsBySellerCode?sellercode="+this.context.sellerCode)
-    .then(data=> {this.setState({products:data.data,loadingProducts:false});}
+
+      if(this.state.addingProducts===true ){
+        console.log(this.state.addProducts)
+        axios.post("http://localhost:7571/addMyProducts?usersubservicecode="+this.context.sellerCode,this.state.addProducts,{
+          headers: {
+            'Content-Type': 'application/json'
+          }}).then(data=> {this.setState({addingProducts:false});})
+
+      }
+
+
+      if(this.state.loadingProducts===true && this.state.addingProducts===false){
+        console.log("PP")
+        if(this.state.categorySelected==-1)
+   axios.get("http://localhost:7571/getRemainingProductsBySellerCode?sellercode="+this.context.sellerCode)
+    .then(data=> {this.setState({products:data.data,loadingProducts:false,addingProducts:false});}
       )
+    
+      else{
+      axios.get("http://localhost:7571/getProductsByCategoryIdAndSellerCode2?sellercode="+this.context.sellerCode+"&id="+this.state.categorySelected)
+      .then(data=> {this.setState({products:data.data,loadingProducts:false,addingProducts:false});}
+        )}
+    
+    }
+
+   
   }
+
+
+  addProducts=()=>{
+
+    this.setState({
+      addingProducts:true,
+      loadingProducts:true,
+      updateDisable:true
+    })
+// this.state.addProducts.forEach(product=>{console.log(product.productId+":"+product.myprice)});
+
+  }
+
+
 
 
   inputChangeHandler=(event,productId)=>{
@@ -48,7 +87,7 @@ class Products extends React.Component {
 
       let index= this.state.addProducts.findIndex(product=>product.productId===productId);
       let newAddProducts=[...this.state.addProducts]
-      newAddProducts[index].myprice=event.target.value;
+      newAddProducts[index].myPrice=+event.target.value;
       this.setState({
         addProducts:newAddProducts
       })
@@ -69,14 +108,20 @@ class Products extends React.Component {
       let index= this.state.products.findIndex(product=>product.productid===productId);
        price=this.state.products[index].price;
      }
+
+     
      let newProduct={
-       myprice:price,
-       productId:productId
+       myPrice:+price,
+       productId:+productId
      }
      let newAddProducts=[...this.state.addProducts, newProduct]
      this.setState({
        addProducts:newAddProducts
      })
+
+     if(this.state.updateDisable===true)
+     this.setState({
+       updateDisable:false});
 
     }
     else {
@@ -86,16 +131,25 @@ class Products extends React.Component {
       this.setState({
         addProducts:newAddProducts
       })
+      console.log(this.state.addProducts.length)
+      if(this.state.addProducts.length===1)
+     this.setState({
+       updateDisable:true});
 
     }
 
   }
 
-  getAddProducts=()=>{
 
-    this.state.addProducts.forEach(product=>{console.log(product.productId+":"+product.myprice)});
+  changeCategorySelected=(categoryId)=>{
+   this.setState({
+    categorySelected:categoryId,
+     loadingProducts:true,
+   } )
 
   }
+
+
 
   render(){
 
@@ -105,7 +159,7 @@ class Products extends React.Component {
     let menu=null;
 
     if(this.state.loadingCategories===false){
-    menu=  <ProductsMenu categories={this.state.categories}/>
+    menu=  <ProductsMenu addProducts={this.addProducts} updateDisable={this.state.updateDisable}  changeCategorySelected={this.changeCategorySelected} categories={this.state.categories}/>
  }
 
  if(this.state.loadingProducts===false){

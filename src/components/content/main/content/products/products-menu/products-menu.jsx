@@ -9,9 +9,9 @@ const productsMenu=(props)=>(
 <Menubar>
 <div className="products__menu">
 <ProductMenuSearch />
-<ProductMenuList p={props}/>
+<ProductMenuList {...props}/>
 <ProductMenuImage />
-<ProductMenuUpdate />
+<ProductMenuUpdate addProducts={props.addProducts} updateDisable={props.updateDisable}/>
 </div>
 </Menubar>
 )
