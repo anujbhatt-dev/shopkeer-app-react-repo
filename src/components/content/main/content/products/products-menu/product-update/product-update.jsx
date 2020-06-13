@@ -3,7 +3,8 @@ const ProductMenuUpdate=(props)=>{
  return (
    <div className="products__menu-update">
      <span className="products__menu-update--span">Total Item Selected : {props.selectedProductsLength}</span>
-     <button className="products__menu-update--btn" disable={props.disable}>UPDATE</button>
+    {props.updateDisable?<button className="products__menu-update--btn" style={{color:"red",cursor:"not-allowed"}} disabled>UPDATE</button>
+     :<button className="products__menu-update--btn" onClick={props.addProducts} style={{color:"green"}}>UPDATE</button>}
   </div>
 )
 }
