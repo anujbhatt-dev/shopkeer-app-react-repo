@@ -393,3 +393,73 @@ a {
   width: 100%;
   padding: 1rem 2rem;
 }
+
+.modal {
+  position: fixed;
+  z-index: 500;
+  background-color: white;
+  width: 80%;
+  border: 2px solid black;
+  box-shadow: 1px 5px 100px black;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  transition: all 0.3s ease-out;
+}
+
+.modal2 {
+  flex-wrap: wrap;
+  display: flex;
+  font-size: 2rem;
+}
+
+.detailProductTable {
+  border: 1px solid black;
+  margin: 2rem 1rem;
+  padding: 0.1rem;
+  flex-grow: 2;
+}
+.detailProductTable__head-row--item {
+  border: 1px solid #777;
+  text-transform: uppercase;
+  padding: 0.5rem;
+}
+.detailProductTable__body-row--item {
+  padding: 0.5rem;
+  border: 1px solid #777;
+}
+.detailProductTable__foot-row--item {
+  padding: 0.5rem;
+  border: 1px solid #777;
+}
+.detailProductTable__foot-row--item:first-child {
+  padding-right: 1rem;
+  text-transform: uppercase;
+  text-align: right;
+}
+
+.detailTable {
+  border: 1px solid black;
+  margin: 2rem 1rem;
+  flex-grow: 1;
+  padding: 0.1rem;
+}
+.detailTable__row-item {
+  padding: 0.5rem;
+  border: 1px solid #777;
+}
+
+.detailBtn {
+  text-align: right;
+  padding: 1rem;
+  margin: 1rem 1rem;
+  flex-basis: 100%;
+}
+.detailBtn__btn {
+  font-weight: 100;
+  padding: 0.5rem 2rem;
+  font-size: 2rem;
+  text-transform: capitalize;
+  margin-left: 1rem;
+}
