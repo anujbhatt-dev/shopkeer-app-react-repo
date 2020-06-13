@@ -1,0 +1,103 @@
+// modal
+.modal{
+  position: fixed;
+  z-index: 500;
+  background-color: white;
+  width: 80%;
+  border: 2px solid black;
+  box-shadow: 1px 5px 100px black;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  box-sizing: border-box;
+  transition: all 0.3s ease-out;
+}
+
+// modal2
+
+.modal2{
+  flex-wrap: wrap;
+  display: flex;
+  font-size: 2rem;
+}
+
+
+// detailProductTable
+.detailProductTable{
+  border: 1px solid black;
+  margin: 2rem 1rem;
+  padding: .1rem;
+  flex-grow: 2;
+  &__head{
+   &-row{
+     &--item{
+        border: 1px solid $color-grey;
+        text-transform:uppercase;
+        padding: .5rem;
+     }
+   }
+  }
+  &__body{
+    &-row{
+      &--item{
+        padding: .5rem;
+        border: 1px solid $color-grey;
+      }
+    }
+  }
+  &__foot{
+
+    &-row{
+      &--item{
+        &:first-child{
+          padding-right: 1rem;
+          text-transform: uppercase;
+          text-align: right;
+        }
+        padding: .5rem;
+         border: 1px solid $color-grey;
+      }
+    }
+  }
+}
+// detailTable
+.detailTable{
+  border: 1px solid black;
+  margin: 2rem 1rem;
+  flex-grow: 1;
+  // flex-wrap: nowrap;
+  padding: .1rem;
+  &__row{
+    &-item{
+      padding: .5rem;
+      border: 1px solid $color-grey;
+    }
+  }
+}
+
+
+//detailBtn
+.detailBtn{
+  text-align: right;
+  padding: 1rem;
+  margin: 1rem 1rem;
+  flex-basis: 100%;
+  // border: 1px solid black;
+
+  &__btn{
+    font-weight: 100;
+    padding: .5rem 2rem;
+    font-size: 2rem;
+    text-transform: capitalize;
+    margin-left:1rem;
+    &-cancel{
+
+    }
+    &-complete{
+
+    }
+    &-ok{
+
+    }
+  }
+}
