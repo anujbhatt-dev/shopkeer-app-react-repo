@@ -1,0 +1,8 @@
+.products__input {
+  height: 3.5rem;
+}
+
+.products__deleteBtn {
+  margin: auto;
+  padding: 1rem 2rem;
+}

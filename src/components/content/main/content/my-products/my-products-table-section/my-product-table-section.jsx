@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import MyProductTableRow from "./my-product-table-row/my-product-table-row"
 
 export default class MyProductTableSection extends Component {
-   
+
 
     render() {
         return (
@@ -21,10 +21,7 @@ export default class MyProductTableSection extends Component {
                 </tbody>
 
             </table>
-            <button onClick={this.props.getAddProducts}>TEST</button>
             </React.Fragment>
         )
     }
 }
-
-

@@ -5,8 +5,8 @@ import Spinner from "../../../../UI/spinner/spinner";
 import LayOutContext from "../../../layout-context";
 import MyProductTableSection from "./my-products-table-section/my-product-table-section"
 
-class MyProducts extends React.Component{ 
-  
+class MyProducts extends React.Component{
+
 
   state={
     loadingCategories:true,

@@ -3,6 +3,7 @@ import Menubar from "../../../../../UI/menubar"
 import ProductMenuImage from './product-menu-image/product-menu-image';
 import ProductMenuSearch from './product-menu-search/product-menu-search';
 import ProductMenuList from './product-menu-list/product-menu-list';
+import ProductMenuUpdate from './product-update/product-update';
 
 const productsMenu=(props)=>(
 <Menubar>
@@ -10,6 +11,7 @@ const productsMenu=(props)=>(
 <ProductMenuSearch />
 <ProductMenuList p={props}/>
 <ProductMenuImage />
+<ProductMenuUpdate />
 </div>
 </Menubar>
 )

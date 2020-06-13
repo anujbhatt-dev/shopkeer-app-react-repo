@@ -4,15 +4,29 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    position: sticky;
+    top:0;
     &-body{
       margin: 2rem;
       border: 1px solid $color-grey;
       padding: .3rem;
     }
     &-image{
-     flex-grow: 1;
+     // flex-grow: 1;
+     padding: 1rem;
      margin: 2rem;
        border: 1px solid $color-grey;
+    }
+    &-update{
+      padding: 1rem;
+     // flex-grow: 1;
+     margin: 2rem;
+       border: 1px solid $color-grey;
+       &--btn{
+         margin: 1rem auto;
+         display: block;
+         padding: 1rem 2rem;
+       }
     }
     &-search{
      // flex-grow: 1;
@@ -20,7 +34,7 @@
      &--box{
        height: 3.5rem;
        padding-left: 1rem;
-       width: 85%;
+       width: 80%;
      }
      &--btn{
        height: 3.5rem;
