@@ -16,16 +16,27 @@
 // modal2
 
 .modal2{
+  text-align:left;
   flex-wrap: wrap;
   display: flex;
   font-size: 2rem;
 }
 
 
+// overflow
+.overflow{
+  position:relative;
+  flex-grow: 2;
+  max-height: 50vh;
+  overflow-y: scroll;
+  margin: 2rem 1rem;
+}
+
 // detailProductTable
 .detailProductTable{
+  margin: auto;
+  width: 90%;
   border: 1px solid black;
-  margin: 2rem 1rem;
   padding: .1rem;
   flex-grow: 2;
   &__head{
@@ -34,10 +45,12 @@
         border: 1px solid $color-grey;
         text-transform:uppercase;
         padding: .5rem;
+        font-weight: bold;
      }
    }
   }
   &__body{
+
     &-row{
       &--item{
         padding: .5rem;
@@ -54,6 +67,7 @@
           text-transform: uppercase;
           text-align: right;
         }
+        font-weight: bold;
         padding: .5rem;
          border: 1px solid $color-grey;
       }

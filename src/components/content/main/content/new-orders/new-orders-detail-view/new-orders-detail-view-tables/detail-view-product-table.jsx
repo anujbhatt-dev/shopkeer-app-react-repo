@@ -7,6 +7,7 @@ const ProductTable = (props)=>{
     return accumulator + num
   })
   return (
+    <div className="overflow">
     <table className="detailProductTable">
       <thead className="detailProductTable__head">
         <tr className="detailProductTable__head-row">
@@ -33,6 +34,7 @@ const ProductTable = (props)=>{
      </tr>
      </tfoot>
     </table>
+    </div>
   )
 }
 
