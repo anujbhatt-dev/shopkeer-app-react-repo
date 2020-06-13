@@ -5,7 +5,7 @@ import Spinner from "../../../../UI/spinner/spinner"
 import axios from "axios"
 import LayOutContext from "../../../layout-context";
 import Modal from "../../../../UI/modal/modal"
-import  CompletedOrdersDetailView from "./completed-orders-detail-view/completed-orders-detail-view"
+import  CompletedOrdersDetailView from "./new-orders-detail-view/new-order-detail-view"
 import Backdrop from "../../../../UI/backdrop/backdrop";
 
 
