@@ -30,7 +30,6 @@ export default class ProductsTableSection extends Component {
                 </tbody>
 
             </table>
-            <button onClick={this.props.getAddProducts}>TEST</button>
             </React.Fragment>
         )
     }

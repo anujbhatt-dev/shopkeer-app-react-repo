@@ -1,0 +1,47 @@
+.products{
+
+  &__menu{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    &-body{
+      margin: 2rem;
+      border: 1px solid $color-grey;
+      padding: .3rem;
+    }
+    &-image{
+     flex-grow: 1;
+     margin: 2rem;
+       border: 1px solid $color-grey;
+    }
+    &-search{
+     // flex-grow: 1;
+
+     &--box{
+       height: 3.5rem;
+       padding-left: 1rem;
+       width: 85%;
+     }
+     &--btn{
+       height: 3.5rem;
+       width: 3.5rem;
+     }
+     margin: 2rem;
+    }
+    @include respond(tab-port){
+      flex-direction: row;
+      justify-content: space-around;
+    }
+    &-list{
+      max-height: 40vh;
+      overflow-y: scroll;
+    }
+    &-item{
+      padding: .6rem 1rem;
+      transition: all .2s;
+      &:hover{
+        background: $color-grey-dark-2;
+      }
+    }
+  }
+}
