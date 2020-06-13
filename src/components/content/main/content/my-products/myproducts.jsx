@@ -14,7 +14,9 @@ class MyProducts extends React.Component{
     products:null,
     categories:null,
     categorySelected:-1,
-    addProducts:[]
+    addProducts:[],
+    deletingProduct:false,
+    deleteProductId:-1
 
   }
 
@@ -40,7 +42,15 @@ class MyProducts extends React.Component{
          axios.get("http://localhost:7571/getProductsByCategoryIdAndSellerCode?sellercode="+this.context.sellerCode+"&id="+this.state.categorySelected)
          .then(data=> {this.setState({products:data.data,loadingProducts:false});}
            )}
-  }
+
+           if(this.state.deletingProduct===true){
+             console.log("deleting "+this.state.deleteProductId)
+           axios.delete("http://localhost:7571/deleteMyProduct?sellercode="+this.context.sellerCode+"&id="+this.state.deleteProductId)
+         .then(data=> {this.setState({deletingProduct:false,deleteProductId:-1});}
+           )}
+          }
+           
+  
 
 
   priceChange=(event,index)=>{
@@ -67,9 +77,17 @@ class MyProducts extends React.Component{
    }
 
 
+   deleteProduct=(index,id)=>{
+    
+    let updatedProducts=[... this.state.products];
+    updatedProducts.splice(index,1);
+    this.setState({products:updatedProducts,deletingProduct:true,deleteProductId:id})
+    
+
+  }
+
+
   render(){
-
-
 
     let content=<Spinner/>;
     let menu=null;
@@ -82,6 +100,7 @@ class MyProducts extends React.Component{
     content=(
     <div className="products">
          <MyProductTableSection
+         deleteProduct={this.deleteProduct}
          priceChange={this.priceChange}
           products={this.state.products}/>
     </div>
