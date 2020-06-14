@@ -1,0 +1,20 @@
+.slideSideBar{
+  color: $color-link;
+  position:fixed;
+  background-image: linear-gradient(to left top, $color-cyan, $color-lightblue);
+  height:0vh;
+  width: 0rem;
+  top:0;
+  // z-index: ;
+
+  transition: all .5s ease-out;
+  visibility: hidden;
+
+}
+.sidebar__toggle:checked + .slideSideBar{
+  width: 30rem;
+  height:100vh;
+  visibility: visible;
+  // height: 100px;
+  // width: 100px;
+}

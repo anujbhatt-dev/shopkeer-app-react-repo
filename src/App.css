@@ -83,6 +83,39 @@ a {
   }
 }
 
+.sidebar:hover {
+  background-image: linear-gradient(to left top, cyan, lightblue);
+}
+.sidebar__toggle {
+  visibility: hidden;
+  opacity: 0;
+}
+.sidebar__btn {
+  z-index: 10;
+  color: #000;
+}
+.sidebar__btn-span {
+  z-index: 10;
+  position: relative;
+  font-size: 2rem;
+}
+.sidebar__btn-span2 {
+  z-index: 10;
+  position: absolute;
+  top: 12%;
+  right: 10%;
+  border-radius: 100px;
+  color: cyan;
+  padding: 0.5rem 1rem;
+  background: #000;
+  font-size: 2rem;
+}
+
+.sidebarFix {
+  display: inline-block;
+  z-index: 10;
+}
+
 .nav {
   flex-grow: 1;
   height: 100%;
@@ -432,4 +465,20 @@ a {
   font-size: 2rem;
   text-transform: capitalize;
   margin-left: 1rem;
+}
+.slideSideBar {
+  color: #000;
+  position: fixed;
+  background-image: linear-gradient(to left top, cyan, lightblue);
+  height: 0vh;
+  width: 0rem;
+  top: 0;
+  transition: all 0.5s ease-out;
+  visibility: hidden;
+}
+
+.sidebar__toggle:checked + .slideSideBar {
+  width: 30rem;
+  height: 100vh;
+  visibility: visible;
 }

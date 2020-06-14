@@ -1,0 +1,37 @@
+.sidebar{
+  &:hover{
+    background-image: linear-gradient(to left top, $color-cyan, $color-lightblue);
+  }
+  &__toggle{
+      // z-index: 10;
+    visibility: hidden;
+    opacity: 0;
+  }
+  &__btn{
+      z-index: 10;
+    // margin-left: -100%;
+    // font-size: 4rem;
+    color: $color-link;
+    &-span{
+        z-index: 10;
+      position:relative;
+      font-size: 2rem;
+    }
+    &-span2{
+      z-index: 10;
+      position: absolute;
+      top:12%;
+      right: 10%;
+
+      border-radius: 100px;
+      color: cyan;
+      padding: .5rem 1rem;
+      background: $color-link;
+      font-size: 2rem;
+    }
+  }
+}
+.sidebarFix{
+   display: inline-block;
+   z-index: 10;
+   }
