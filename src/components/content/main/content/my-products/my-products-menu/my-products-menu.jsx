@@ -12,7 +12,7 @@ const productsMenu=(props)=>(
 <MyProductMenuList {... props}/>
 {props.imageName.length>0?
 <MyProductMenuImage imageUrl={props.imageUrl} imageName={props.imageName}  />:null}
-<MyProductMenuUpdate />
+<MyProductMenuUpdate updateProduct={props.updateProduct} updateDisable={props.updateDisable} />
 </div>
 </Menubar>
 )

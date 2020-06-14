@@ -20,6 +20,9 @@ class MyProducts extends React.Component{
     deleteProductId:-1,
     imageUrl:"",
     imageName:"",
+    updateDisable:true,
+    updateProducts:[],
+    updatingProducts:false,
 
   }
 
@@ -34,6 +37,14 @@ class MyProducts extends React.Component{
     axios.get("http://localhost:7571/getProductCategoriesByUserSubServiceCode/"+this.context.sellerCode)
     .then(data=> {this.setState({categories:data.data,loadingCategories:false});}
       )
+
+      if(this.state.updatingProducts===true)
+      axios.post("http://localhost:7571/updateMyProductPrice?sellercode="+this.context.sellerCode,this.state.updateProducts,{
+        headers: {
+          'Content-Type': 'application/json'
+        }})
+      //  .then(data=> {this.setState({searchedProducts:data.data,products:data.data,loadingProducts:false,updatingProducts:false});}
+      //    )
 
       if(this.state.loadingProducts===true)
       if(this.state.categorySelected===-1)
@@ -58,16 +69,7 @@ class MyProducts extends React.Component{
 
   priceChange=(event,index)=>{
 
-    let updatedProduct={...this.state.searchedProducts[index]};
-    updatedProduct.price=event.target.value;
-
-    let updatedProducts=[... this.state.searchedProducts];
-    updatedProducts[index]=updatedProduct;
-
-    this.setState({
-      searchedProducts:updatedProducts
-    })
-
+   
   }
 
   
@@ -127,6 +129,73 @@ class MyProducts extends React.Component{
   }
 
 
+  updateProduct=()=>{
+
+    this.setState({updatingProducts:true,loadingProducts:true});
+  }
+
+  addProductUpdate=(event,id,index)=>{
+
+    let updatedProduct={...this.state.searchedProducts[index]};
+    updatedProduct.price=event.target.value;
+
+    let updatedProducts=[... this.state.searchedProducts];
+    updatedProducts[index]=updatedProduct;
+
+    this.setState({
+      searchedProducts:updatedProducts,
+      updateDisable:false,
+    })
+
+
+    if(event.target.value===""){
+
+      let newUpdateProducts =[... this.state.updateProducts];
+      let index=newUpdateProducts.findIndex((product)=>product.productId===id);
+      newUpdateProducts.splice(index,1);
+      if(newUpdateProducts.length===0)
+      {
+        this.setState({
+          updateProducts:newUpdateProducts,
+          updateDisable:true,
+        })
+      }
+      else{
+        this.setState({
+          updateProducts:newUpdateProducts,
+        })
+
+      }
+    }
+    else{
+     
+      let newUpdateProducts =[... this.state.updateProducts];
+      
+      let index=newUpdateProducts.findIndex((product)=>product.productId===id);
+          
+      if(index===-1){
+        let product={
+          productId:id,
+          myPrice:event.target.value,
+        };
+        newUpdateProducts.push(product);
+
+      }
+      else{
+        newUpdateProducts[index].myPrice=event.target.value;
+
+      }
+
+      this.setState({
+        updateProducts:newUpdateProducts,
+      })
+
+    }
+
+  }
+
+
+
 
   render(){
 
@@ -134,7 +203,7 @@ class MyProducts extends React.Component{
     let menu=null;
 
     if(this.state.loadingCategories===false){
-    menu=  <MyProductsMenu imageUrl={this.state.imageUrl} imageName={this.state.imageName} search={this.search} changeCategorySelected={this.changeCategorySelected} 
+    menu=  <MyProductsMenu updateProduct={this.updateProduct} imageUrl={this.state.imageUrl} updateDisable={this.state.updateDisable} imageName={this.state.imageName} search={this.search} changeCategorySelected={this.changeCategorySelected} 
     categories={this.state.categories}/>
  }
 
@@ -145,6 +214,7 @@ class MyProducts extends React.Component{
          deleteProduct={this.deleteProduct}
          priceChange={this.priceChange}
          showImage={this.showImage}
+         addProductUpdate={this.addProductUpdate}
           products={this.state.searchedProducts}/>
     </div>
     )}
