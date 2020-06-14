@@ -1,9 +1,11 @@
 import React from "react"
+import Modal from "../../../../../UI/modal/modal";
+
 
 const NewOrderContent = (props) =>{
   return(
-      <div className="newOrderContent" onClick={props.click}>
-        <div className="newOrderContent__details ">
+      <div className="newOrderContent" >
+        <div className="newOrderContent__details" onClick={props.click}>
           <div className="newOrderContent__details-name">{props.order.customername}</div>
           <div className="newOrderContent__details-phone">{props.order.contactno}</div>
           <div className="newOrderContent__details-time">{props.order.time}</div>
@@ -32,7 +34,7 @@ const NewOrderContent = (props) =>{
            })}
             </div>
         </div>
-        <div className="newOrderContent__footer" onClick={props.click}>
+        <div className="newOrderContent__footer">
           <div className="newOrderContent__footer-total" onClick={props.click}>
             ₹ {props.order.totalprice}
           </div>
