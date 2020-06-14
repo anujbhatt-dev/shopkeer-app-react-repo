@@ -47,7 +47,8 @@ class Products extends React.Component {
         axios.post("http://localhost:7571/addMyProducts?usersubservicecode="+this.context.sellerCode,this.state.addProducts,{
           headers: {
             'Content-Type': 'application/json'
-          }}).then(data=> {this.setState({addingProducts:false});})
+          }})
+          .then(data=> {this.setState({addProducts:[],addingProducts:false});})
 
       }
 
@@ -56,7 +57,7 @@ class Products extends React.Component {
         console.log("PP")
         if(this.state.categorySelected==-1)
    axios.get("http://localhost:7571/getRemainingProductsBySellerCode?sellercode="+this.context.sellerCode)
-    .then(data=> {this.setState({searchedProducts:data.data,products:data.data,loadingProducts:false,addingProducts:false});}
+    .then(data=> {this.setState({searchedProducts:data.data,products:data.data,loadingProducts:false,});}
       )
     
       else{
@@ -75,7 +76,7 @@ class Products extends React.Component {
     this.setState({
       addingProducts:true,
       loadingProducts:true,
-      updateDisable:true
+     updateDisable:true
     })
 // this.state.addProducts.forEach(product=>{console.log(product.productId+":"+product.myprice)});
 
@@ -118,6 +119,7 @@ class Products extends React.Component {
        productId:+productId
      }
      let newAddProducts=[...this.state.addProducts, newProduct]
+     console.log(newAddProducts)
      this.setState({
        addProducts:newAddProducts
      })
