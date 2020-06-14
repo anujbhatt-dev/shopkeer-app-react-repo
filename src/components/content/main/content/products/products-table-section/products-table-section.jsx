@@ -26,7 +26,7 @@ export default class ProductsTableSection extends Component {
                   </tr>
                 </thead>
                 <tbody className="products__table-body">
-                {this.props.products.map(product=><ProductsTableRow product={product} checkBoxClick={this.props.checkBoxClick} inputChange={this.props.inputChange}/>)}
+                {this.props.products.map(product=><ProductsTableRow showImage={this.props.showImage} product={product} checkBoxClick={this.props.checkBoxClick} inputChange={this.props.inputChange}/>)}
                 </tbody>
 
             </table>

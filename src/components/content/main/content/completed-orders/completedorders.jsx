@@ -7,6 +7,7 @@ import LayOutContext from "../../../layout-context";
 import Modal from "../../../../UI/modal/modal"
 import  CompletedOrdersDetailView from "./new-orders-detail-view/new-order-detail-view"
 import Backdrop from "../../../../UI/backdrop/backdrop";
+import newOrdersMenu from "../new-orders/new-orders-menu/new-orders-menu";
 
 
 
@@ -37,6 +38,8 @@ componentDidUpdate(){
       this.setState({loading:false,orders:data.data})})
   }
 
+ 
+
 }
 
 
@@ -53,6 +56,7 @@ closeDetailView=()=>{
 }
 
 
+
   render(){
 
     let table=<Spinner/>
@@ -66,13 +70,15 @@ table=( this.state.orders.map((order,index)=>{
     name={order.customername}
     total={order.totalprice}
     mode={order.mode}
-    orderId={order.orderid}/>
+    orderId={order.orderid}
+  
+    />
   )
 }))
 
 if(this.state.detailView===true)
 modal=(  <React.Fragment>
-  <Modal ><CompletedOrdersDetailView order={this.state.orders[this.state.detailViewIndex]}/></Modal>
+  <Modal ><CompletedOrdersDetailView  order={this.state.orders[this.state.detailViewIndex]}/></Modal>
   <Backdrop click={this.closeDetailView}/>
 </React.Fragment>)
 
