@@ -12,11 +12,14 @@ class MyProducts extends React.Component{
     loadingCategories:true,
     loadingProducts:true,
     products:null,
+    searchedProducts:null,
     categories:null,
     categorySelected:-1,
     addProducts:[],
     deletingProduct:false,
-    deleteProductId:-1
+    deleteProductId:-1,
+    imageUrl:"",
+    imageName:"",
 
   }
 
@@ -35,12 +38,12 @@ class MyProducts extends React.Component{
       if(this.state.loadingProducts===true)
       if(this.state.categorySelected===-1)
       axios.get("http://localhost:7571/getProductsBySellerCode?sellercode="+this.context.sellerCode)
-       .then(data=> {this.setState({products:data.data,loadingProducts:false});}
+       .then(data=> {this.setState({searchedProducts:data.data,products:data.data,loadingProducts:false});}
          )
        
          else{
          axios.get("http://localhost:7571/getProductsByCategoryIdAndSellerCode?sellercode="+this.context.sellerCode+"&id="+this.state.categorySelected)
-         .then(data=> {this.setState({products:data.data,loadingProducts:false});}
+         .then(data=> {this.setState({searchedProducts:data.data,products:data.data,loadingProducts:false});}
            )}
 
            if(this.state.deletingProduct===true){
@@ -55,14 +58,14 @@ class MyProducts extends React.Component{
 
   priceChange=(event,index)=>{
 
-    let updatedProduct={...this.state.products[index]};
+    let updatedProduct={...this.state.searchedProducts[index]};
     updatedProduct.price=event.target.value;
 
-    let updatedProducts=[... this.state.products];
+    let updatedProducts=[... this.state.searchedProducts];
     updatedProducts[index]=updatedProduct;
 
     this.setState({
-      products:updatedProducts
+      searchedProducts:updatedProducts
     })
 
   }
@@ -79,12 +82,50 @@ class MyProducts extends React.Component{
 
    deleteProduct=(index,id)=>{
     
+    let updatedSearchedProducts=[... this.state.searchedProducts];
     let updatedProducts=[... this.state.products];
-    updatedProducts.splice(index,1);
-    this.setState({products:updatedProducts,deletingProduct:true,deleteProductId:id})
+    updatedSearchedProducts.splice(index,1);
+    updatedProducts.forEach((product,index)=>{if(product.productid==id){updatedProducts.splice(index,1);return false;}return true;})
+    this.setState({products:updatedProducts,searchedProducts:updatedSearchedProducts,deletingProduct:true,deleteProductId:id})
     
 
   }
+
+  search=(event)=>{
+
+    if(event.target. value.length==0)
+    this.setState((state)=>{return{searchedProducts:state.products}})
+    else{
+
+      
+      let newSearchedProducts= this.state.products.filter((product)=>product.productname.toLowerCase().indexOf(event.target.value.toLowerCase())>-1)
+
+      this.setState({
+        searchedProducts:newSearchedProducts
+      })
+
+    }
+
+  }
+
+  showImage=(id)=>{
+
+    let imageUrl,imageName="";
+    this.state.searchedProducts.forEach(product =>
+       {
+         console.log(product.productid+":"+id);
+         if(product.productid===id)
+         {imageUrl=product.productimage;
+          imageName=product.productname;
+          return false}
+      return true;});
+
+    console.log(imageUrl+":"+imageName);
+
+    this.setState({imageUrl:imageUrl,imageName:imageName});
+
+  }
+
 
 
   render(){
@@ -93,7 +134,8 @@ class MyProducts extends React.Component{
     let menu=null;
 
     if(this.state.loadingCategories===false){
-    menu=  <MyProductsMenu  changeCategorySelected={this.changeCategorySelected} categories={this.state.categories} categories={this.state.categories}/>
+    menu=  <MyProductsMenu imageUrl={this.state.imageUrl} imageName={this.state.imageName} search={this.search} changeCategorySelected={this.changeCategorySelected} 
+    categories={this.state.categories}/>
  }
 
  if(this.state.loadingProducts===false){
@@ -102,7 +144,8 @@ class MyProducts extends React.Component{
          <MyProductTableSection
          deleteProduct={this.deleteProduct}
          priceChange={this.priceChange}
-          products={this.state.products}/>
+         showImage={this.showImage}
+          products={this.state.searchedProducts}/>
     </div>
     )}
 

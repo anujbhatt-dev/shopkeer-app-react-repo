@@ -17,11 +17,14 @@ class Products extends React.Component {
     loadingCategories:true,
     loadingProducts:true,
     products:null,
+    searchedProducts:null,
     categories:null,
     categorySelected:-1,
     addProducts:[],
     updateDisable:true,
     addingProducts:false,
+    imageUrl:"",
+    imageName:"",
 
   }
 
@@ -53,12 +56,12 @@ class Products extends React.Component {
         console.log("PP")
         if(this.state.categorySelected==-1)
    axios.get("http://localhost:7571/getRemainingProductsBySellerCode?sellercode="+this.context.sellerCode)
-    .then(data=> {this.setState({products:data.data,loadingProducts:false,addingProducts:false});}
+    .then(data=> {this.setState({searchedProducts:data.data,products:data.data,loadingProducts:false,addingProducts:false});}
       )
     
       else{
       axios.get("http://localhost:7571/getProductsByCategoryIdAndSellerCode2?sellercode="+this.context.sellerCode+"&id="+this.state.categorySelected)
-      .then(data=> {this.setState({products:data.data,loadingProducts:false,addingProducts:false});}
+      .then(data=> {this.setState({searchedProducts:data.data,products:data.data,loadingProducts:false,addingProducts:false});}
         )}
     
     }
@@ -150,6 +153,43 @@ class Products extends React.Component {
   }
 
 
+  search=(event)=>{
+
+    if(event.target. value.length==0)
+    this.setState((state)=>{return{searchedProducts:state.products}})
+    else{
+
+      
+      let newSearchedProducts= this.state.products.filter((product)=>product.productname.toLowerCase().indexOf(event.target.value.toLowerCase())>-1)
+
+      this.setState({
+        searchedProducts:newSearchedProducts
+      })
+
+    }
+
+  }
+
+
+  showImage=(id)=>{
+
+    let imageUrl,imageName="";
+    this.state.searchedProducts.forEach(product =>
+       {
+         console.log(product.productid+":"+id);
+         if(product.productid===id)
+         {imageUrl=product.productimage;
+          imageName=product.productname;
+          return false}
+      return true;});
+
+    console.log(imageUrl+":"+imageName);
+
+    this.setState({imageUrl:imageUrl,imageName:imageName});
+
+  }
+
+
 
   render(){
 
@@ -159,7 +199,14 @@ class Products extends React.Component {
     let menu=null;
 
     if(this.state.loadingCategories===false){
-    menu=  <ProductsMenu addProducts={this.addProducts} updateDisable={this.state.updateDisable}  changeCategorySelected={this.changeCategorySelected} categories={this.state.categories}/>
+    menu=  <ProductsMenu productsSelected={this.state.addProducts.length} 
+               imageUrl={this.state.imageUrl}
+               imageName={this.state.imageName}
+              addProducts={this.addProducts} 
+              updateDisable={this.state.updateDisable}  
+              changeCategorySelected={this.changeCategorySelected} 
+              categories={this.state.categories}
+              search={this.search}/>
  }
 
  if(this.state.loadingProducts===false){
@@ -169,7 +216,8 @@ class Products extends React.Component {
           checkBoxClick={this.checkBoxHandler} 
          inputChange={this.inputChangeHandler} 
          getAddProducts={this.getAddProducts}
-          products={this.state.products}/>
+         showImage={this.showImage}
+          products={this.state.searchedProducts}/>
     </div>
     )}
 

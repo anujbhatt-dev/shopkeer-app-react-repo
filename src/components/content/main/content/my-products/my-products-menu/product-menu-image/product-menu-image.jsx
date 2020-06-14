@@ -4,7 +4,7 @@ const MyProductMenuImage = (props) => {
 
   return (
     <div className="products__menu-image">
-    <div className="products__menu-item--detail">ProductMenuImage</div>
+    <div className="products__menu-item--detail"><img src={props.imageUrl} alt={props.imageName+" image not found"}/></div>
     </div>
   )
 

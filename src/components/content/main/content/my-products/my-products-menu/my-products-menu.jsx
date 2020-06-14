@@ -8,9 +8,10 @@ import MyProductMenuUpdate from './product-update/product-update';
 const productsMenu=(props)=>(
 <Menubar>
 <div className="products__menu">
-<MyProductMenuSearch />
+<MyProductMenuSearch  search={props.search} />
 <MyProductMenuList {... props}/>
-<MyProductMenuImage />
+{props.imageName.length>0?
+<MyProductMenuImage imageUrl={props.imageUrl} imageName={props.imageName}  />:null}
 <MyProductMenuUpdate />
 </div>
 </Menubar>
