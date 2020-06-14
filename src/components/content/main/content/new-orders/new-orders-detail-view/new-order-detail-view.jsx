@@ -7,7 +7,7 @@ const NewOrderDetailView=(props)=>(
     <div className="modal2">
         <ProductTable p={props}/>
         <DetailTable p={props}/>
-        <DetailBtn p={props}/>
+        <DetailBtn   deleteOrder={props.deleteOrder} close={props.close}/>
     </div>
 )
 

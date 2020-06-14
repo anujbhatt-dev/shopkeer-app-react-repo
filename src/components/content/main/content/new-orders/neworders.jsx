@@ -19,6 +19,7 @@ class NewOrders extends React.Component{
     detailView:false,
     loading:false,
     loaded:false,
+    deletingOrderId:-1,
      orders:null
   }
 
@@ -47,6 +48,14 @@ class NewOrders extends React.Component{
   console.log(data.data);
       this.setState({orders:data.data,loading:false,loaded:true});
  })
+
+ if(this.state.deletingOrderId>-1){
+  // 
+  axios.get("http://localhost:7571/declineOrde?id="+this.state.deletingOrderId).
+  then(data=>{this.setState({deletingOrderId:-1})}).catch((data=>{this.setState({deletingOrderId:-1})}));
+
+   
+ }
   }
 
 
@@ -62,6 +71,19 @@ class NewOrders extends React.Component{
 
   }
 
+  
+deleteOrder=(index,id)=>{
+
+  let newOrders=[... this.state.orders];
+
+  newOrders.splice(index,1);
+  this.closeDetailView();
+
+  this.setState({
+    orders:newOrders,
+    deletingOrderId:id,
+  })
+}
 
   render(){
 
@@ -69,7 +91,7 @@ class NewOrders extends React.Component{
     if(this.state.detailViewIndex>-1)
       detailView=(
       <React.Fragment>
-        <Modal ><NewOrderDetailView order={this.state.orders[this.state.detailViewIndex]}/></Modal>
+        <Modal ><NewOrderDetailView   deleteOrder={this.deleteOrder} close={this.closeDetailView} order={this.state.orders[this.state.detailViewIndex]}/></Modal>
         <Backdrop click={this.closeDetailView}/>
       </React.Fragment>
     )
@@ -80,7 +102,7 @@ class NewOrders extends React.Component{
     boxes=(
       this.state.orders.map((order,index)=>
         (<Box key={order.orderid} >
-        <NewOrderContent click={()=>this.openDetailView(index)} order={order}/></Box>)
+        <NewOrderContent   deleteOrder={this.deleteOrder} click={()=>this.openDetailView(index)} order={order}/></Box>)
     ))
 
     const content=(

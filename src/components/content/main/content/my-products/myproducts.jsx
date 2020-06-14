@@ -43,8 +43,7 @@ class MyProducts extends React.Component{
         headers: {
           'Content-Type': 'application/json'
         }})
-      //  .then(data=> {this.setState({searchedProducts:data.data,products:data.data,loadingProducts:false,updatingProducts:false});}
-      //    )
+     
 
       if(this.state.loadingProducts===true)
       if(this.state.categorySelected===-1)
