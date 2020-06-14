@@ -65,40 +65,40 @@
 }
 //completedOrders__table
 
-.completedOrders {
-  font-size: 1.5rem;
-  flex-grow: 1;
-  text-align: center;
-  &__table {
-
-    &-header {
-      font-weight: 500;
-
-      &--item {
-        min-width: 10rem;
-        @include respond(phone){
-          min-width: 5rem
-        }
-        @include respond(tab-port){
-          font-size: 1.2rem;
-        }
-      }
-    }
-    &-section {
-
-      &--item {
-        text-align: left;
-        padding-left: 1rem;
-
-        min-width: 10rem;
-        @include respond(phone){
-          min-width: 5rem
-        }
-        @include respond(tab-port){
-          font-size: 1.2rem;
-        }
-
-      }
-    }
-  }
-}
+// .completedOrders {
+//   font-size: 1.5rem;
+//   flex-grow: 1;
+//   text-align: center;
+//   &__table {
+//
+//     &-header {
+//       font-weight: 500;
+//
+//       &--item {
+//         min-width: 10rem;
+//         @include respond(phone){
+//           min-width: 5rem
+//         }
+//         @include respond(tab-port){
+//           font-size: 1.2rem;
+//         }
+//       }
+//     }
+//     &-section {
+//
+//       &--item {
+//         text-align: left;
+//         padding-left: 1rem;
+//
+//         min-width: 10rem;
+//         @include respond(phone){
+//           min-width: 5rem
+//         }
+//         @include respond(tab-port){
+//           font-size: 1.2rem;
+//         }
+//
+//       }
+//     }
+//   }
+// }

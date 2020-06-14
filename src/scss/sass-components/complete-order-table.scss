@@ -1,31 +1,30 @@
 .completedOrders {
-  padding: 2rem;
+   margin: 1rem;
+   flex-grow: 1;
+
   &__table {
-    background: $color-grey-light-2;
-    box-shadow: 0rem 1rem 5rem $color-grey-dark-3;
-    padding: 1rem;
+    padding: .5rem;
+    width: 100%;
+    background: rgba($color-grey,.4);
+    border: 1px solid $color-link;
+    box-shadow: 0rem 2rem 5rem $color-grey;
     &-header {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 2rem;
-      text-transform: uppercase;
 
       &--item {
-       border: 1px solid $color-grey;
-       padding:1rem 2rem;
-       flex-grow: 1;
+        border: 1px solid $color-link;
+        font-weight: bold;
+        font-size: 2rem;
+        text-transform: uppercase;
+        padding: 1rem 2rem;
+
       }
     }
     &-section {
-      display: flex;
-      justify-content: center;
       &--item {
-      border: 1px solid $color-grey-dark-2;
-      padding: 1rem 2rem;
-      flex-grow: 1;
-      text-transform: capitalize;
-      // font-size: 2rem;
-
+        border: 1px solid $color-link;
+        font-size: 2rem;
+        text-transform: capitalize;
+        padding: 1rem 2rem;
       }
     }
   }

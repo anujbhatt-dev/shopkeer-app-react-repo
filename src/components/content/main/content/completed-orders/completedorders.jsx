@@ -5,7 +5,7 @@ import Spinner from "../../../../UI/spinner/spinner"
 import axios from "axios"
 import LayOutContext from "../../../layout-context";
 import Modal from "../../../../UI/modal/modal"
-import  CompletedOrdersDetailView from "./completed-orders-detail-view/completed-orders-detail-view"
+import  CompletedOrdersDetailView from "./new-orders-detail-view/new-order-detail-view"
 import Backdrop from "../../../../UI/backdrop/backdrop";
 
 
@@ -61,7 +61,6 @@ if(this.state.orders)
 table=( this.state.orders.map((order,index)=>{
   return (
     <Completed
-
     click={()=>this.openDetailView(index)}
     date={order.date}
     name={order.customername}
@@ -84,17 +83,19 @@ modal=(  <React.Fragment>
     <React.Fragment>
        <div className="menu"><CompletedOrdersMenu/></div>
     <div className="completedOrders">
-     <div className="completedOrders__table">
-        <div className="completedOrders__table-header">
-          <div className="completedOrders__table-header--item">date</div>
-          <div className="completedOrders__table-header--item">name</div>
-          <div className="completedOrders__table-header--item">total price</div>
-          <div className="completedOrders__table-header--item">mode</div>
-          <div className="completedOrders__table-header--item">order_Id</div>
-        </div>
+     <table className="completedOrders__table">
+        <thead className="completedOrders__table-header">
+        <tr className="completedOrders__table-header--row">
+          <td className="completedOrders__table-header--item">date</td>
+          <td className="completedOrders__table-header--item">name</td>
+          <td className="completedOrders__table-header--item">total price</td>
+          <td className="completedOrders__table-header--item">mode</td>
+          <td className="completedOrders__table-header--item">order_Id</td>
+        </tr>
+        </thead>
         {modal}
        {table}
-      </div>
+      </table>
     </div>
 
     </React.Fragment>
