@@ -1,15 +1,14 @@
 .slideSideBar{
   color: $color-link;
-  position:fixed;
+  position:absolute;
   background-image: linear-gradient(to left top, $color-cyan, $color-lightblue);
-  height:0vh;
+  height:100vh;
   width: 0rem;
   top:0;
   // z-index: ;
-
-  transition: all .5s ease-out;
+  box-shadow: 1rem 2rem 5rem rgba($color-link,.8);
+  transition: all .3s ease-out;
   visibility: hidden;
-
 }
 .sidebar__toggle:checked + .slideSideBar{
   width: 30rem;
@@ -17,4 +16,26 @@
   visibility: visible;
   // height: 100px;
   // width: 100px;
+}
+.sidebar__toggle:checked + .slideSideBar .myProfile-fixer{
+   // left:0;
+   animation: myProfile .5s ease-out 1;
+   animation-fill-mode: forwards;
+}
+@keyframes myProfile {
+  0%{
+   left: -150%;
+  }
+  25%{
+   left: -75%;
+  }
+  50%{
+     left: 0%;
+  }
+  75%{
+     left: 3%;
+  }
+  100%{
+    left: 0;
+  }
 }

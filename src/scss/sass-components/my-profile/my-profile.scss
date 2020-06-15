@@ -1,0 +1,48 @@
+.myProfile-fixer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: relative;
+  left: -150%;
+  
+}
+.myProfile{
+  border: 1px solid $color-grey;
+  padding: 1rem;
+  &__head{
+    display: flex;
+    align-items: center;
+    font-size: 3rem;
+    &-myPic{
+      overflow: hidden;
+      width: 4.5rem;
+      height: 4.5rem;
+      background: $color-green;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 100px;
+      margin:0.5rem;
+      margin-right: 1rem;
+    }
+    &-myName{
+      text-transform: capitalize;
+    }
+  }
+  &__shopPic{
+    border: 1px solid $color-grey;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 3px;
+    width: 25rem;
+    height: 20rem;
+  }
+  &__details{
+    text-transform:capitalize;
+    font-size: 2rem;
+    &-item{
+      padding: .5rem 1rem;
+
+    }
+  }
+}

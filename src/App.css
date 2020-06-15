@@ -468,12 +468,13 @@ a {
 }
 .slideSideBar {
   color: #000;
-  position: fixed;
+  position: absolute;
   background-image: linear-gradient(to left top, cyan, lightblue);
-  height: 0vh;
+  height: 100vh;
   width: 0rem;
   top: 0;
-  transition: all 0.5s ease-out;
+  box-shadow: 1rem 2rem 5rem rgba(0, 0, 0, 0.8);
+  transition: all 0.3s ease-out;
   visibility: hidden;
 }
 
@@ -481,4 +482,74 @@ a {
   width: 30rem;
   height: 100vh;
   visibility: visible;
+}
+
+.sidebar__toggle:checked + .slideSideBar .myProfile-fixer {
+  animation: myProfile 0.5s ease-out 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes myProfile {
+  0% {
+    left: -150%;
+  }
+  25% {
+    left: -75%;
+  }
+  50% {
+    left: 0%;
+  }
+  75% {
+    left: 3%;
+  }
+  100% {
+    left: 0;
+  }
+}
+.myProfile-fixer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: relative;
+  left: -150%;
+}
+
+.myProfile {
+  border: 1px solid #777;
+  padding: 1rem;
+}
+.myProfile__head {
+  display: flex;
+  align-items: center;
+  font-size: 3rem;
+}
+.myProfile__head-myPic {
+  overflow: hidden;
+  width: 4.5rem;
+  height: 4.5rem;
+  background: green;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 100px;
+  margin: 0.5rem;
+  margin-right: 1rem;
+}
+.myProfile__head-myName {
+  text-transform: capitalize;
+}
+.myProfile__shopPic {
+  border: 1px solid #777;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 3px;
+  width: 25rem;
+  height: 20rem;
+}
+.myProfile__details {
+  text-transform: capitalize;
+  font-size: 2rem;
+}
+.myProfile__details-item {
+  padding: 0.5rem 1rem;
 }
